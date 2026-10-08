@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+  <title>MMTH 闊度分叉研究共識</title>
+  <style>
+    :root{
+      color-scheme:light dark;
+      --paper:#f3f4f0;
+      --surface:#ffffff;
+      --surface-2:#e9ebe5;
+      --ink:#15201c;
+      --muted:#59655f;
+      --line:#cfd5cf;
+      --accent:#08725b;
+      --accent-strong:#045846;
+      --accent-soft:#dcefe8;
+      --risk:#b34a32;
+      --risk-soft:#f5e4df;
+      --gold:#a46d10;
+      --gold-soft:#f4ead5;
+      --shadow:0 18px 50px rgba(28,44,37,.08);
+      --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      --serif:"Noto Serif TC","Songti TC",serif;
+    }
+    @media (prefers-color-scheme:dark){
+      :root{
+        --paper:#0e1512;
+        --surface:#151e1a;
+        --surface-2:#1d2924;
+        --ink:#edf4f0;
+        --muted:#a9b8b0;
+        --line:#32423a;
+        --accent:#58c3a3;
+        --accent-strong:#83d8be;
+        --accent-soft:#173c31;
+        --risk:#ee8d76;
+        --risk-soft:#3c241f;
+        --gold:#e7b65e;
+        --gold-soft:#392f1d;
+        --shadow:0 20px 54px rgba(0,0,0,.26);
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--sans);
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+    button{font:inherit}
+    .progress{position:fixed;inset:0 auto auto 0;height:3px;width:0;background:var(--accent);z-index:30}
+    .page{width:min(1180px,calc(100% - 36px));margin:0 auto}
+    .hero{padding:64px 0 34px;border-bottom:1px solid var(--line)}
+    .meta{display:flex;gap:10px 18px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;font-weight:600}
+    .meta span{display:inline-flex;align-items:center;gap:7px}
+    .meta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+    h1{font-family:var(--serif);font-size:clamp(2.45rem,6vw,5.5rem);line-height:1.06;letter-spacing:-.045em;max-width:950px;margin:28px 0 24px}
+    h1 em{font-style:normal;color:var(--risk)}
+    .dek{max-width:850px;font-size:clamp(1.06rem,2vw,1.3rem);color:var(--muted);margin:0}
+    .verdict{margin-top:38px;background:var(--surface);box-shadow:var(--shadow);display:grid;grid-template-columns:1.45fr .75fr;border-top:5px solid var(--accent)}
+    .verdict-copy{padding:32px 36px}
+    .label{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--accent);margin:0 0 10px}
+    .verdict h2{font-family:var(--serif);font-size:clamp(1.55rem,3vw,2.35rem);line-height:1.28;margin:0 0 14px}
+    .verdict p{margin:0;color:var(--muted)}
+    .verdict-score{padding:28px 30px;background:var(--accent-soft);display:grid;align-content:center;gap:4px}
+    .verdict-score strong{font-family:var(--serif);font-size:2.25rem;color:var(--accent-strong)}
+    .verdict-score span{font-size:.9rem;color:var(--muted)}
+    .toc-wrap{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .toc{width:min(1180px,calc(100% - 36px));margin:auto;display:flex;flex-wrap:wrap;gap:4px;padding:10px 0}
+    .toc a{text-decoration:none;padding:8px 11px;border-radius:4px;font-size:.79rem;font-weight:700;color:var(--muted)}
+    .toc a:hover,.toc a.active{background:var(--surface-2);color:var(--ink)}
+    main{padding:40px 0 80px}
+    section{scroll-margin-top:90px;margin-top:78px}
+    section:first-child{margin-top:0}
+    .section-head{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start;margin-bottom:28px}
+    .num{font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--line)}
+    .section-title h2{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.7rem);line-height:1.2;margin:0 0 8px}
+    .section-title p{margin:0;color:var(--muted);max-width:760px}
+    .snapshot{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
+    .chart-card,.note,.table-wrap,.matrix,.source-panel{background:var(--surface);border:1px solid var(--line)}
+    .chart-card{padding:26px;box-shadow:var(--shadow)}
+    .chart-card h3,.note h3,.matrix h3{font-size:1rem;margin:0 0 18px}
+    #breadthChart{display:block;width:100%;height:auto;min-height:300px}
+    .chart-note{margin:12px 0 0;color:var(--muted);font-size:.82rem}
+    .definition{display:grid;gap:12px}
+    .def-row{padding:20px 22px;background:var(--surface);border-top:3px solid var(--line)}
+    .def-row.accent{border-color:var(--accent)}
+    .def-row.risk{border-color:var(--risk)}
+    .def-row strong{font-size:1.25rem;display:block;margin-bottom:4px}
+    .def-row p{margin:0;color:var(--muted);font-size:.92rem}
+    .source-line{display:block;margin-top:11px;color:var(--muted);font-size:.76rem}
+    .consensus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .consensus-item{padding:24px;background:var(--surface);border:1px solid var(--line);position:relative}
+    .consensus-item.wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;background:var(--accent-soft);border-color:transparent}
+    .c-index{font:800 .74rem/1 var(--sans);letter-spacing:.12em;color:var(--accent);margin-bottom:12px}
+    .consensus-item h3{font-family:var(--serif);font-size:1.25rem;line-height:1.35;margin:0 0 9px}
+    .consensus-item p{margin:0;color:var(--muted);font-size:.92rem}
+    .wide .c-index{font-size:1.15rem;margin:7px 0 0}
+    .table-stack{display:grid;gap:22px}
+    .table-wrap{overflow:hidden}
+    .table-head{padding:22px 24px 16px;border-bottom:1px solid var(--line)}
+    .table-head h3{font-family:var(--serif);font-size:1.35rem;margin:0 0 4px}
+    .table-head p{margin:0;color:var(--muted);font-size:.82rem}
+    table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+    th,td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{font-size:.76rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;background:var(--surface-2)}
+    td{font-size:.9rem}
+    tr:last-child td{border-bottom:0}
+    .neg{color:var(--risk);font-weight:800}
+    .history-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .history-notes article{padding:18px 20px;background:var(--surface-2)}
+    .history-notes strong{display:block;margin-bottom:4px}
+    .history-notes p{margin:0;color:var(--muted);font-size:.84rem}
+    .reliability{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    .matrix{padding:26px}
+    .matrix-row{display:grid;grid-template-columns:112px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+    .matrix-row:first-of-type{border-top:0;padding-top:0}
+    .matrix-row:last-child{padding-bottom:0}
+    .badge{font-size:.74rem;font-weight:800;letter-spacing:.04em;padding:6px 9px;background:var(--surface-2);align-self:start;text-align:center}
+    .matrix-row p{margin:0;color:var(--muted);font-size:.9rem}
+    .callout{background:var(--gold-soft);padding:28px;border-left:6px solid var(--gold)}
+    .callout h3{font-family:var(--serif);font-size:1.45rem;margin:0 0 10px}
+    .callout p{margin:0;color:var(--muted)}
+    .split-drivers{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .driver{padding:26px;background:var(--surface);border-top:5px solid var(--accent)}
+    .driver.drag{border-color:var(--risk)}
+    .driver h3{font-family:var(--serif);font-size:1.35rem;margin:0 0 16px}
+    .driver ul,.watchlist{margin:0;padding:0;list-style:none}
+    .driver li{padding:11px 0;border-top:1px solid var(--line);color:var(--muted)}
+    .driver li:first-child{border-top:0}
+    .watch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .watch-card{padding:23px;background:var(--surface);border:1px solid var(--line)}
+    .watch-card h3{margin:0 0 12px;font-size:1rem;color:var(--accent)}
+    .watch-card.down h3{color:var(--risk)}
+    .watch-card li{padding:7px 0;color:var(--muted);font-size:.9rem}
+    .risk-note{margin-top:18px;padding:22px 24px;border:1px dashed var(--line);color:var(--muted);font-size:.9rem}
+    .corrections{counter-reset:fix;display:grid;gap:10px}
+    .correction{counter-increment:fix;display:grid;grid-template-columns:38px 1fr;gap:14px;padding:18px 20px;background:var(--surface)}
+    .correction::before{content:counter(fix);display:grid;place-items:center;width:30px;height:30px;background:var(--risk-soft);color:var(--risk);font-weight:800;border-radius:50%}
+    .correction p{margin:1px 0 0;color:var(--muted);font-size:.88rem}
+    details{background:var(--surface);border:1px solid var(--line);margin-top:12px}
+    summary{cursor:pointer;padding:18px 20px;font-weight:800}
+    details .detail-body{padding:0 20px 20px;color:var(--muted);font-size:.9rem}
+    .source-panel{padding:26px}
+    .source-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 28px}
+    .source-item{padding:13px 0;border-top:1px solid var(--line)}
+    .source-item:nth-child(-n+2){border-top:0}
+    .source-item strong{display:block;font-size:.9rem}
+    .source-item span{font-size:.78rem;color:var(--muted)}
+    .open-questions{margin-top:20px;background:var(--risk-soft);padding:22px 24px}
+    .open-questions h3{margin:0 0 10px;color:var(--risk)}
+    .open-questions ul{margin:0;padding-left:1.25rem;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:.82rem}
+    footer strong{color:var(--ink)}
+    @media (max-width:820px){
+      .hero{padding-top:42px}
+      .verdict,.snapshot,.reliability,.split-drivers{grid-template-columns:1fr}
+      .verdict-score{grid-template-columns:auto 1fr;align-items:center;gap:14px}
+      .section-head{grid-template-columns:62px 1fr;gap:14px}
+      .num{font-size:1.7rem}
+      .consensus-grid,.watch-grid{grid-template-columns:1fr}
+      .consensus-item.wide{grid-column:auto;display:block}
+      .wide .c-index{margin:0 0 10px}
+      .history-notes{grid-template-columns:1fr}
+      .source-grid{grid-template-columns:1fr}
+      .source-item:nth-child(2){border-top:1px solid var(--line)}
+    }
+    @media (max-width:560px){
+      .page,.toc{width:min(100% - 24px,1180px)}
+      .hero{padding-bottom:26px}
+      .meta{font-size:.74rem}
+      h1{font-size:2.55rem}
+      .dek{font-size:1rem}
+      .verdict-copy{padding:24px 20px}
+      .verdict-score{padding:20px}
+      .toc{gap:2px;padding:8px 0}
+      .toc a{font-size:.72rem;padding:6px 7px}
+      main{padding-top:28px}
+      section{margin-top:58px}
+      .section-head{grid-template-columns:1fr;gap:8px}
+      .num{font-size:1rem;color:var(--accent)}
+      .chart-card,.matrix,.source-panel{padding:18px}
+      #breadthChart{min-height:260px}
+      .consensus-item{padding:20px}
+      .table-wrap{border:0;background:transparent;overflow:visible}
+      .table-head{background:var(--surface);border:1px solid var(--line)}
+      table,thead,tbody,tr,th,td{display:block}
+      thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+      tr{margin-top:10px;background:var(--surface);border:1px solid var(--line);padding:11px 15px}
+      td{display:grid;grid-template-columns:105px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.84rem}
+      td::before{content:attr(data-label);color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.04em}
+      .matrix-row{grid-template-columns:1fr;gap:8px}
+      .badge{text-align:left;width:max-content}
+      .driver{padding:20px}
+      .watch-card{padding:20px}
+      .correction{grid-template-columns:32px 1fr;padding:15px}
+    }
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media print{
+      .progress,.toc-wrap{display:none}
+      body{background:#fff;color:#111}
+      .page{width:100%;max-width:none}
+      section{break-inside:avoid-page;margin-top:38px}
+      .hero{padding-top:0}
+      .chart-card,.verdict{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <header class="hero">
+    <div class="page">
+      <div class="meta"><span>四方三輪共識</span><span>數據截至 2026-10-07</span><span>市場闊度研究</span></div>
+      <h1>指數創新高，<br><em>但大多數股票已掉隊。</em></h1>
+      <p class="dek">S&amp;P 500 貼近歷史高位，MMTH 同 S5TH 卻同時跌穿 50%。四位助手嘅共同判斷：呢個係罕見而值得防守嘅結構性警號，但唔係一個可以精準報頂嘅計時器。</p>
+      <div class="verdict">
+        <div class="verdict-copy">
+          <p class="label">結論先行</p>
+          <h2>今次比 2021 年 12 月更脆弱；最接近嘅嚴格歷史背景，要追溯到 1998–2000。</h2>
+          <p>真正關鍵唔係「明日會唔會跌」，而係未來數週至數月，闊度會修復，定係 mega-cap 開始補跌。</p>
+        </div>
+        <div class="verdict-score">
+          <strong>中等</strong>
+          <span>方向性可靠度<br>不足以化成單一命中率</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="toc-wrap">
+    <nav class="toc" aria-label="章節導覽">
+      <a href="#snapshot">現況</a><a href="#consensus">七點共識</a><a href="#history">歷史</a><a href="#reliability">可靠度</a><a href="#drivers">驅動因素</a><a href="#watch">觀察位</a><a href="#method">修正與來源</a>
+    </nav>
+  </div>
+
+  <main class="page">
+    <section id="snapshot">
+      <div class="section-head"><div class="num">01</div><div class="section-title"><h2>雙重破位：兩個市場層次都不足一半</h2><p>兩條 breadth series 用途唔同，但訊息一致：指數表面強勢，底下參與度已經偏弱。</p></div></div>
+      <div class="snapshot">
+        <figure class="chart-card">
+          <h3>高於 200 日線嘅股票比例</h3>
+          <svg id="breadthChart" viewBox="0 0 680 330" role="img" aria-labelledby="chartTitle chartDesc"></svg>
+          <figcaption class="chart-note">基準線由 0% 起；50% 為「過半股票參與」分界。MMTH 與 S5TH 嘅 universe 不同，數值唔應直接當成同一序列。</figcaption>
+        </figure>
+        <div class="definition">
+          <article class="def-row accent"><strong>MMTH · 44.39%</strong><p>較廣市場闊度 proxy。不同供應商嘅 universe／成分處理可能有差異，唔寫死覆蓋清單。</p><span class="source-line">來源：Patrick 提供嘅 TradingView 週線圖 · 2026-10-07</span></article>
+          <article class="def-row risk"><strong>S5TH · 46.81%</strong><p>S&amp;P 500 成分股入面，高於各自 200 日線嘅比例。</p><span class="source-line">來源：S5TH · 2026-10-06</span></article>
+          <article class="def-row"><strong>雙重破位</strong><p>較廣市場同標普成分股 participation 都低於 50%。單憑兩條 series 唔能夠識別特定子組別，所以唔作「二線藍籌」斷言。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="consensus">
+      <div class="section-head"><div class="num">02</div><div class="section-title"><h2>經三輪討論收斂嘅七點共識</h2><p>共識唔等於所有措辭一致；係核心判斷一致，限制條件同未知數亦一併保留。</p></div></div>
+      <div class="consensus-grid">
+        <article class="consensus-item"><div class="c-index">C1</div><h3>嚴格標準下歷史極罕見</h3><p>少過 50% 成分股企喺 200 日線之上，同時指數貼近歷史高位。BTIG／Jonathan Krinsky（2026-09-28）指有數據以來約 25 個交易日，全部集中喺 1998–2000；佢哋並非 25 個獨立樣本。</p></article>
+        <article class="consensus-item"><div class="c-index">C2</div><h3>2021-12 係「行衰咗」嘅方向類比</h3><p>當時新高之後踏入 2022 熊市，由高位計最大回撤 −25.4%；2022-10-12 收市 3,577.03。但當時標普成分闊度約 68%，結構冇今次咁弱。</p></article>
+        <article class="consensus-item"><div class="c-index">C3</div><h3>係脆弱性訊號，唔係計時器</h3><p>窄領導可以維持好耐，2023–2024 就係反例。訊號提高未來數週至數月嘅波動／回撤風險，唔代表鎖死頂部日期。</p></article>
+        <article class="consensus-item"><div class="c-index">C4</div><h3>利率係條件變量</h3><p>10 年期美債息約 5.27–5.31%，屬 2002 年以來最高；聯儲局 2026-09-16 加息 25bp 至 3.75%–4.00%，壓住細價股同利率敏感板塊。</p></article>
+        <article class="consensus-item"><div class="c-index">C5</div><h3>市值集中係機械成因</h3><p>Mag7 佔指數約 34.7–35%；中位數成分股距自身高位約 16–16.3%。2026 Q3 市值加權 +2.82%，等權重 −1.67%；自 8 月 13 日高位以來約 391／502 隻成分股下跌。</p></article>
+        <article class="consensus-item"><div class="c-index">C6</div><h3>今次係「雙弱」</h3><p>MMTH 44.39%，而標普成分闊度多源落喺 42–47.5%，兩者同時低於 50%。2021-12 標普成分仍約 68% 企喺 200 日線上。</p></article>
+        <article class="consensus-item wide"><div class="c-index">C7</div><div><h3>真正要觀察嘅係：闊度修復，定龍頭補跌</h3><p>今次比只見外圍市場轉弱更脆弱；但風險未落地前，仍然只係一個條件訊號。四方一致反對將佢簡化成「見到 40% 就做空」。</p></div></article>
+      </div>
+    </section>
+
+    <section id="history">
+      <div class="section-head"><div class="num">03</div><div class="section-title"><h2>兩個主要歷史座標</h2><p>固定日期回報同期間最大回撤係兩個唔同概念，以下分欄展示，避免再混用。</p></div></div>
+      <div class="table-stack">
+        <div class="table-wrap">
+          <div class="table-head"><h3>2021-12-27 類比</h3><p>基點：S&amp;P 500 收市 4,791.19 · price return，未含股息 · FRED／S&amp;P Dow Jones Indices 日收市</p></div>
+          <table>
+            <thead><tr><th>窗口</th><th>固定日期回報</th><th>期間收市最大回撤</th></tr></thead>
+            <tbody>
+              <tr><td data-label="窗口">1 個月 · 至 2022-01-27</td><td data-label="固定回報" class="neg">−9.7%</td><td data-label="期間 MDD" class="neg">−9.7%</td></tr>
+              <tr><td data-label="窗口">3 個月 · 至 2022-03-28</td><td data-label="固定回報" class="neg">−4.5%</td><td data-label="期間 MDD"><span class="neg">−13.0%</span><br>2022-03-08 收 4,170.70</td></tr>
+              <tr><td data-label="窗口">6 個月 · 至 2022-06-27</td><td data-label="固定回報" class="neg">−18.6%</td><td data-label="期間 MDD"><span class="neg">−23.3%</span><br>2022-06-17 收 3,674.84</td></tr>
+              <tr><td data-label="窗口">12 個月 · 至 2022-12-27</td><td data-label="固定回報" class="neg">−20.1%</td><td data-label="期間 MDD"><span class="neg">−25.3%</span><br>2022-10-12 收 3,577.03</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <div class="table-head"><h3>2000-03-24 科網泡沫頂峰</h3><p>基點：S&amp;P 500 收市 1,527.46 · price return，未含股息 · ^GSPC 日收市標準市場數據；FRED 日線只保留 10 年</p></div>
+          <table>
+            <thead><tr><th>窗口</th><th>固定日期回報</th><th>補充</th></tr></thead>
+            <tbody>
+              <tr><td data-label="窗口">1 個月 · 至 2000-04-24</td><td data-label="固定回報" class="neg">−6.39%</td><td data-label="補充">期間 MDD 約 <span class="neg">−11.4%</span></td></tr>
+              <tr><td data-label="窗口">3 個月 · 至 2000-06-23</td><td data-label="固定回報" class="neg">−5.63%</td><td data-label="補充">—</td></tr>
+              <tr><td data-label="窗口">6 個月 · 至 2000-09-22</td><td data-label="固定回報" class="neg">−5.16%</td><td data-label="補充">—</td></tr>
+              <tr><td data-label="窗口">12 個月 · 至 2001-03-23</td><td data-label="固定回報" class="neg">−25.37%</td><td data-label="補充">—</td></tr>
+              <tr><td data-label="窗口">終極低位 · 2002-10-09</td><td data-label="固定回報" class="neg">−49.15%</td><td data-label="補充">收市 776.76</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="history-notes">
+        <article><strong>2018-10</strong><p>峰值 2,930.75（09-20）至 2,416.62（12-21），約 −19.8%。來源：grok-bot 覆核。</p></article>
+        <article><strong>1998–2000</strong><p>約 25 個嚴格前例交易日集中同一時代，唔應當成獨立事件計命中率。來源：BTIG。</p></article>
+        <article><strong>2023–2024</strong><p>Jan 2024、Jun 2024 顯示窄領導可以延續，闊度亦可以自行修復。</p></article>
+      </div>
+    </section>
+
+    <section id="reliability">
+      <div class="section-head"><div class="num">04</div><div class="section-title"><h2>可靠度要分層，唔可以一個百分比講晒</h2><p>過濾條件一改，樣本數同結論都會變。四方最終撤回「85%+／無一例外」講法。</p></div></div>
+      <div class="reliability">
+        <div class="matrix">
+          <h3>證據層級</h3>
+          <div class="matrix-row"><span class="badge">嚴格標準</span><p><strong>&lt;50%＋指數貼近高位。</strong> 樣本極小，集中 1998–2000，唔做獨立大樣本命中率推論。</p></div>
+          <div class="matrix-row"><span class="badge">較鬆標準</span><p><strong>Johnson／Backtest：</strong>1998–2024 共 13 例；5／13（約 38%）三個月內指數跌 ≥5%，7／13 闊度自行修復，12 個月平均回報接近正常，風險集中第 2–3 個月。研究原始逐項樣本未見公開。</p></div>
+          <div class="matrix-row"><span class="badge">NDR 三條件</span><p>距高位 &lt;3%、&lt;35% 股票在 50 日線上、&lt;50% 在 200 日線上。自 1980 年僅 6 次；約 1 個月偏下，平均約 5 個月後見頂。未披露逐次回報，唔報命中率。</p></div>
+          <div class="matrix-row"><span class="badge">反例</span><p><strong>SentimenTrader（2026-04-28）</strong>另一套條件 n≈9，半年偏上——條件一變，結論可以反轉。</p></div>
+        </div>
+        <aside class="callout"><h3>可用嘅結論，只有一句</h3><p>呢個訊號罕見，會提高未來數週至數月嘅回撤／波動風險；方向性中等，但唔能夠量化成一個可驗證、可跨口徑套用嘅單一命中率。</p><span class="source-line">註：Johnson／Backtest 自帶窗口所列 Dec 2021 −11%、Dec 2024 −7%，唔可同固定日期回報表混用。</span></aside>
+      </div>
+    </section>
+
+    <section id="drivers">
+      <div class="section-head"><div class="num">05</div><div class="section-title"><h2>點解指數升、平均股票跌？</h2><p>市值加權機制令少數大公司足以托高指數；同時高息環境將壓力集中喺中小盤同利率敏感板塊。</p></div></div>
+      <div class="split-drivers">
+        <article class="driver"><h3>托住指數</h3><ul><li>AI mega-cap：Mag7 佔指數約 35%</li><li>AI 資本開支由自身現金流支持</li><li>被動 ETF 按市值加權，自動向大市值公司加倉</li><li>AI 電力概念公用股</li></ul></article>
+        <article class="driver drag"><h3>拖住大市</h3><ul><li>10 年期美債息約 5.3%</li><li>DXY 強美元約 102</li><li>Brent 原油約 US$100</li><li>中小盤及利率敏感板塊融資成本飆升</li><li>等權重指數連跌</li></ul></article>
+      </div>
+      <span class="source-line">市場條件數據截至 2026-10-07；10 年債息、聯儲局決議及市場廣度由四方研究整理，市場數據會變。</span>
+    </section>
+
+    <section id="watch">
+      <div class="section-head"><div class="num">06</div><div class="section-title"><h2>下一步，望三組觸發位</h2><p>呢個框架用嚟判斷結構有冇改善或惡化，唔係個人化買賣指令。</p></div></div>
+      <div class="watch-grid">
+        <article class="watch-card"><h3>偏好訊號</h3><ul class="watchlist"><li>S5TH／MMTH 回上 55–60%</li><li>高於 20 日線比例回上 50%</li></ul></article>
+        <article class="watch-card down"><h3>偏淡訊號</h3><ul class="watchlist"><li>SPY 跌穿 50 日線，闊度繼續跌</li><li>Mag7 龍頭跌穿 50 天線，出現全面補跌</li></ul></article>
+        <article class="watch-card"><h3>Swing factor</h3><ul class="watchlist"><li>10 年期美債息</li><li>利率回落可紓緩壓力；再升則加劇融資負擔</li></ul></article>
+      </div>
+      <div class="risk-note"><strong>一般風控原則：</strong>指數同平均股票係兩種唔同嘅 bet，要分開管理；研究來源傾向「對沖而非清倉」，列出 protective puts、put spreads、collars 等標準工具。歷史較弱窗口集中第 2–3 個月，來源因而提到 2–4 個月期權年期；但假訊號率唔低，唔應機械化做空闊度。</div>
+    </section>
+
+    <section id="method">
+      <div class="section-head"><div class="num">07</div><div class="section-title"><h2>修正記錄、來源同仍未解嘅問題</h2><p>三輪討論嘅價值唔只係達成共識，仲包括主動刪走經唔起覆核嘅數字。</p></div></div>
+      <div class="corrections">
+        <div class="correction"><p>最初寫「2021-12 新高後 3 個月 −11%」有誤；work-buddy 同 grok-bot 用 FRED 收市價核實，固定日期回報改為 <strong>−4.5%</strong>。</p></div>
+        <div class="correction"><p>「2024-12 −7%」被刪除：grok-bot 核實標普實際約 <strong>−4.3%</strong>，−7.5% 係等權 RSP，而且當時 10 年債息唔係一年高。</p></div>
+        <div class="correction"><p>google-spark 撤回「85%+／無一例外」可靠度，改採嚴格、較鬆、NDR、反例四層寫法。</p></div>
+        <div class="correction"><p>1999-12 嘅 −8.4%／−11.2%／−22.1% 經重算證偽，改用 <strong>2000-03-24</strong> 頂峰起算。</p></div>
+        <div class="correction"><p>38–40%／60% 最初誤歸 SentimenTrader，後更正為 Johnson／Backtest 較鬆標準研究；唔再套落嚴格標準。</p></div>
+      </div>
+
+      <details>
+        <summary>來源索引</summary>
+        <div class="detail-body">
+          <div class="source-grid">
+            <div class="source-item"><strong>TradingView</strong><span>Patrick 提供嘅週線圖；S&amp;P 500、MMTH 當前讀數</span></div>
+            <div class="source-item"><strong>FRED／S&amp;P Dow Jones Indices</strong><span>2021-12-27 之後固定日期收市回報與 MDD</span></div>
+            <div class="source-item"><strong>BTIG／Jonathan Krinsky · 2026-09-28</strong><span>嚴格標準下約 25 個交易日集中 1998–2000</span></div>
+            <div class="source-item"><strong>Reuters／Refinitiv · 2021-12-17</strong><span>當時約 68% 標普成分股高於 200 日線</span></div>
+            <div class="source-item"><strong>Ned Davis Research · 2026-09-30</strong><span>三重條件自 1980 年僅 6 次</span></div>
+            <div class="source-item"><strong>SentimenTrader · 2026-04-28</strong><span>另一套條件 n≈9、半年偏上嘅反例</span></div>
+            <div class="source-item"><strong>Johnson／Backtest</strong><span>較鬆條件 13 例；原始逐項樣本未公開</span></div>
+            <div class="source-item"><strong>^GSPC 標準市場數據</strong><span>2000-03-24 頂峰回報；FRED 日線只保留 10 年</span></div>
+          </div>
+          <p>研究底稿冇提供可核實嘅公開網址；為免自行重構或錯配連結，本頁只保留來源機構、作者同日期。</p>
+        </div>
+      </details>
+
+      <div class="open-questions"><h3>仍然未解</h3><ul><li>MMTH 不同供應商嘅 universe／成分處理差異，會唔會影響 44.39% 同歷史門檻比較。</li><li>Johnson／Backtest 13 例嘅原始逐項樣本未見公開，未能獨立重算。</li><li>嚴格案例集中同一個科網泡沫 regime，未能證明跨時代穩定性。</li></ul></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page"><strong>參與：</strong>檬粉（Muse，協調＋執筆） · grok-bot（研究助手） · google-spark（Gemini Spark） · work-buddy（Kai） · 總指揮 Patrick（秋）<br>2026-10-07 · 呢份係四方研究共識，唔係投資建議；市場數據係截圖與研究當日快照。</div>
+  </footer>
+
+  <script>
+    (function(){
+      var data=[
+        {label:"MMTH",value:44.39,color:"var(--accent)",date:"2026-10-07"},
+        {label:"S5TH",value:46.81,color:"var(--risk)",date:"2026-10-06"}
+      ];
+      var svg=document.getElementById("breadthChart");
+      var NS="http://www.w3.org/2000/svg", W=560, x0=82, y0=78, gap=98, barH=34;
+      function el(name,attrs,text){var n=document.createElementNS(NS,name);Object.keys(attrs||{}).forEach(function(k){n.setAttribute(k,attrs[k]);});if(text!=null)n.textContent=text;return n;}
+      svg.appendChild(el("title",{id:"chartTitle"},"MMTH 同 S5TH 高於 200 日線比例"));
+      svg.appendChild(el("desc",{id:"chartDesc"},"MMTH 為 44.39%，S5TH 為 46.81%，兩者都低於 50% 門檻。"));
+      [0,25,50,75,100].forEach(function(t){
+        var x=x0+W*t/100;
+        svg.appendChild(el("line",{x1:x,y1:48,x2:x,y2:252,stroke:"var(--line)","stroke-width":"1"}));
+        svg.appendChild(el("text",{x:x,y:286,"text-anchor":"middle",fill:"var(--muted)","font-size":"13","font-family":"var(--sans)"},t+"%"));
+      });
+      var tx=x0+W*.5;
+      svg.appendChild(el("line",{x1:tx,y1:38,x2:tx,y2:257,stroke:"var(--gold)","stroke-width":"2","stroke-dasharray":"6 6"}));
+      svg.appendChild(el("text",{x:tx+8,y:34,fill:"var(--gold)","font-size":"12","font-weight":"700","font-family":"var(--sans)"},"50% 分界"));
+      data.forEach(function(d,i){
+        var y=y0+i*gap;
+        svg.appendChild(el("text",{x:0,y:y+23,fill:"var(--ink)","font-size":"17","font-weight":"800","font-family":"var(--sans)"},d.label));
+        svg.appendChild(el("rect",{x:x0,y:y,width:W,height:barH,fill:"var(--surface-2)",rx:"3"}));
+        svg.appendChild(el("rect",{x:x0,y:y,width:W*d.value/100,height:barH,fill:d.color,rx:"3"}));
+        svg.appendChild(el("text",{x:x0+W*d.value/100-8,y:y+23,"text-anchor":"end",fill:"white","font-size":"14","font-weight":"800","font-family":"var(--sans)"},d.value.toFixed(2)+"%"));
+        svg.appendChild(el("text",{x:x0,y:y+55,fill:"var(--muted)","font-size":"12","font-family":"var(--sans)"},d.date));
+      });
+
+      var progress=document.querySelector(".progress");
+      var links=[].slice.call(document.querySelectorAll(".toc a"));
+      var sections=links.map(function(a){return document.querySelector(a.getAttribute("href"));});
+      function update(){
+        var doc=document.documentElement;
+        var max=doc.scrollHeight-doc.clientHeight;
+        progress.style.width=(max>0?(doc.scrollTop/max*100):0)+"%";
+        var marker=window.scrollY+150, active=0;
+        sections.forEach(function(s,i){if(s&&s.offsetTop<=marker)active=i;});
+        links.forEach(function(a,i){a.classList.toggle("active",i===active);});
+      }
+      update();
+      window.addEventListener("scroll",update,{passive:true});
+      window.addEventListener("resize",update);
+    })();
+  </script>
+</body>
+</html>
