@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>家常便飯 · Pat Zone</title>
+<title>首頁 · Pat Zone</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -96,23 +96,37 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="../index.html">← 首頁</a></div></div>
-<div class="hero"><div class="kicker">家常便飯</div><h1>🍳 家常便飯</h1><p>屋企嘅味道，撳入去睇材料同做法</p></div>
+<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><span></span></div></div>
+<div class="hero"><div class="kicker">WELCOME</div><h1>Pat Zone</h1><p>食譜 · 投資筆記，隨時開嚟睇</p></div>
 <div class="wrap">
-<div class="sect"><span class="e">🍲</span><h2>湯</h2><span class="n">2 道</span></div><a class="rcard" href="miso-soup.html"><div class="rhead"><span class="re">🍲</span><h3>秋季溫潤去燥湯</h3></div><div class="tags"><span class="tag meat">素食</span><span class="tag desc">豆腐、海帶｜去燥</span></div></a>
-<a class="rcard" href="luffa-chicken.html"><div class="rhead"><span class="re">🍗</span><h3>勝瓜浸雞</h3></div><div class="tags"><span class="tag meat">雞肉</span><span class="tag desc">餘溫浸雞嫩滑</span></div></a>
-<div class="sect"><span class="e">🍳</span><h2>餸</h2><span class="n">5 道</span></div><a class="rcard" href="beef-ribs.html"><div class="rhead"><span class="re">🥩</span><h3>蘑菇牛仔骨</h3></div><div class="tags"><span class="tag meat">牛肉</span><span class="tag desc">牛仔骨、蘑菇</span></div></a>
-<a class="rcard" href="tomato-beef.html"><div class="rhead"><span class="re">🍅</span><h3>番茄豆腐燜牛肉</h3></div><div class="tags"><span class="tag meat">牛肉</span><span class="tag desc">一鍋到底｜減脂、少油高蛋白</span></div></a>
-<a class="rcard" href="siu-chao-wang.html"><div class="rhead"><span class="re">🍳</span><h3>小炒王</h3></div><div class="tags"><span class="tag meat">豬肉</span><span class="tag desc">五花腩、蝦乾、韭菜</span></div></a>
-<a class="rcard" href="salmon.html"><div class="rhead"><span class="re">🐟</span><h3>三文魚低卡料理</h3></div><div class="tags"><span class="tag meat">魚類</span><span class="tag desc">三文魚、豆腐｜低卡</span></div></a>
-<a class="rcard" href="bok-choy.html"><div class="rhead"><span class="re">🥬</span><h3>蒜薑炒青江菜絲</h3></div><div class="tags"><span class="tag meat">素食</span><span class="tag desc">快手｜去菜味靠刀工</span></div></a>
-<div class="sect"><span class="e">🍚</span><h2>主食</h2><span class="n">3 道</span></div><a class="rcard" href="curry-rice.html"><div class="rhead"><span class="re">🍛</span><h3>日式咖喱雞飯</h3></div><div class="tags"><span class="tag meat">雞肉</span><span class="tag desc">一鍋到底｜4 人份</span></div></a>
-<a class="rcard" href="bibimbap.html"><div class="rhead"><span class="re">🥗</span><h3>素食韓式拌飯</h3></div><div class="tags"><span class="tag meat">素食</span><span class="tag desc">拌飯醬自調</span></div></a>
-<a class="rcard" href="mushroom-rice.html"><div class="rhead"><span class="re">🍄</span><h3>黑椒忌廉蘑菇飯</h3></div><div class="tags"><span class="tag meat">素食</span><span class="tag desc">還原 KFC｜可轉雞湯（避牛肉）</span></div></a>
+
+<a class="homecard" href="recipes/index.html">
+  <span class="ico">🍳</span>
+  <div><h2>家常便飯</h2><p>10 道食譜 · 材料做法一撳即睇</p></div>
+  <span class="go">→</span>
+</a>
+<a class="homecard" href="notes/index.html">
+  <span class="ico">📈</span>
+  <div><h2>投資筆記</h2><p>市場研究整理 · 自己重溫用</p></div>
+  <span class="go">→</span>
+</a>
 </div>
 <footer>PAT ZONE</footer>
 </body>
