@@ -96,6 +96,19 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
 </head>
