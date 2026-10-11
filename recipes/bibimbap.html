@@ -96,6 +96,21 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
 </head>
@@ -104,7 +119,7 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 
 <div class="wrap">
 <div class="pagetitle">🥗 素食韓式拌飯（Vegetarian Bibimbap）</div>
-<div class="pagesub"><span class="tag cat">主食</span><span class="tag meat">素食</span></div>
+<div class="pagesub"><span class="tag cat">主食</span><span class="tag meat">其他</span></div>
 <p class="lede">&gt; 來源：「美味食譜就在這」Facebook page，2026-10-04</p>
 <p class="lede">&gt; 原文：https://www.facebook.com/story.php?story_fbid=1695646519234720&amp;id=100063681638148</p>
 <div class="ingcard"><h2>🧂 材料</h2><ul><li>| 材料 | 份量 |</li><li>|---|---|</li><li>| 米飯 | 200g |</li><li>| 菠菜 | 50g |</li><li>| 黃豆芽 | 40g |</li><li>| 胡蘿蔔 | 40g |</li><li>| 西葫蘆 | 40g |</li><li>| 鮮香菇 | 30g |</li><li>| 老豆腐 | 50g |</li><li>| 雞蛋 | 1 顆（50g） |</li><li>| 無五辛韓式辣醬 | 30g |</li><li>| 生抽 | 15g |</li><li>| 芝麻油 | 10g |</li><li>| 白糖 | 10g |</li><li>| 白芝麻 | 5g |</li><li>| 海苔碎 | 5g |</li></ul></div>

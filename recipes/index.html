@@ -104,6 +104,8 @@ a{color:var(--acc);text-decoration:none}
   padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
   white-space:nowrap}
 .tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
 .tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
   box-shadow:0 4px 12px rgba(224,100,43,.35)}
 .tab.active .n{background:rgba(255,255,255,.25);color:#fff}
@@ -117,49 +119,59 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 <div class="hero"><div class="kicker">家常便飯</div><h1>🍳 家常便飯</h1><p>家常嘅味道，撳入去睇材料同做法</p></div>
 <div class="wrap">
 <div class="tabs">
-<button class="tab active" data-tab="all">🍽️ 全部<span class="n">14</span></button>
-<button class="tab" data-tab="湯">🍲 湯<span class="n">3</span></button>
-<button class="tab" data-tab="餸">🍳 餸<span class="n">6</span></button>
-<button class="tab" data-tab="主食">🍚 主食<span class="n">5</span></button>
+<button class="tab ttype active" data-type="all">🍽️ 全部<span class="n">14</span></button>
+<button class="tab ttype" data-type="湯">🍲 湯<span class="n">3</span></button>
+<button class="tab ttype" data-type="餸">🍳 餸<span class="n">6</span></button>
+<button class="tab ttype" data-type="主食">🍚 主食<span class="n">5</span></button>
 </div>
-<div class="tabpanel" id="tab-all"><a class="rcard" href="miso-soup.html"><div class="rhead"><span class="re">🍲</span><h3>秋季溫潤去燥湯</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">素食</span><span class="tag desc">豆腐、海帶｜去燥</span></div></a>
-<a class="rcard" href="beef-ribs.html"><div class="rhead"><span class="re">🥩</span><h3>蘑菇牛仔骨</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">牛肉</span><span class="tag desc">牛仔骨、蘑菇</span></div></a>
-<a class="rcard" href="tomato-beef.html"><div class="rhead"><span class="re">🍅</span><h3>番茄豆腐燜牛肉</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">牛肉</span><span class="tag desc">一鍋到底｜減脂、少油高蛋白</span></div></a>
-<a class="rcard" href="siu-chao-wang.html"><div class="rhead"><span class="re">🍳</span><h3>小炒王</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">豬肉</span><span class="tag desc">五花腩、蝦乾、韭菜</span></div></a>
-<a class="rcard" href="salmon.html"><div class="rhead"><span class="re">🐟</span><h3>三文魚低卡料理</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">魚類</span><span class="tag desc">三文魚、豆腐｜低卡</span></div></a>
-<a class="rcard" href="bok-choy.html"><div class="rhead"><span class="re">🥬</span><h3>蒜薑炒青江菜絲</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">素食</span><span class="tag desc">快手｜去菜味靠刀工</span></div></a>
-<a class="rcard" href="chicken-mushroom.html"><div class="rhead"><span class="re">🍗</span><h3>法式蘑菇忌廉燉大雞髀</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">雞肉</span><span class="tag desc">約30分鐘｜高蛋白</span></div></a>
-<a class="rcard" href="curry-rice.html"><div class="rhead"><span class="re">🍛</span><h3>日式咖喱雞飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">雞肉</span><span class="tag desc">一鍋到底｜4 人份</span></div></a>
-<a class="rcard" href="bibimbap.html"><div class="rhead"><span class="re">🥗</span><h3>素食韓式拌飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">素食</span><span class="tag desc">拌飯醬自調</span></div></a>
-<a class="rcard" href="mushroom-rice.html"><div class="rhead"><span class="re">🍄</span><h3>黑椒忌廉蘑菇飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">素食</span><span class="tag desc">還原 KFC｜可轉雞湯（避牛肉）</span></div></a>
-<a class="rcard" href="luffa-chicken.html"><div class="rhead"><span class="re">🍗</span><h3>勝瓜浸雞</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">雞肉</span><span class="tag desc">餘溫浸雞嫩滑</span></div></a>
-<a class="rcard" href="shrimp-noodle-soup.html"><div class="rhead"><span class="re">🍜</span><h3>蔥油鮮蝦湯麵</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">蝦</span><span class="tag desc">蝦頭蝦殼熬濃湯</span></div></a>
-<a class="rcard" href="tomato-chicken-pasta.html"><div class="rhead"><span class="re">🍝</span><h3>番茄蒜香雞肉闊麵</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">雞肉</span><span class="tag desc">番茄、忌廉｜高蛋白</span></div></a>
-<a class="rcard" href="tomato-shrimp-pasta.html"><div class="rhead"><span class="re">🍤</span><h3>番茄蒜香蝦闊麵</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">蝦</span><span class="tag desc">番茄、忌廉｜原版</span></div></a></div>
-<div class="tabpanel" id="tab-湯" hidden><a class="rcard" href="miso-soup.html"><div class="rhead"><span class="re">🍲</span><h3>秋季溫潤去燥湯</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">素食</span><span class="tag desc">豆腐、海帶｜去燥</span></div></a>
-<a class="rcard" href="luffa-chicken.html"><div class="rhead"><span class="re">🍗</span><h3>勝瓜浸雞</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">雞肉</span><span class="tag desc">餘溫浸雞嫩滑</span></div></a>
-<a class="rcard" href="shrimp-noodle-soup.html"><div class="rhead"><span class="re">🍜</span><h3>蔥油鮮蝦湯麵</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">蝦</span><span class="tag desc">蝦頭蝦殼熬濃湯</span></div></a></div>
-<div class="tabpanel" id="tab-餸" hidden><a class="rcard" href="beef-ribs.html"><div class="rhead"><span class="re">🥩</span><h3>蘑菇牛仔骨</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">牛肉</span><span class="tag desc">牛仔骨、蘑菇</span></div></a>
-<a class="rcard" href="tomato-beef.html"><div class="rhead"><span class="re">🍅</span><h3>番茄豆腐燜牛肉</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">牛肉</span><span class="tag desc">一鍋到底｜減脂、少油高蛋白</span></div></a>
-<a class="rcard" href="siu-chao-wang.html"><div class="rhead"><span class="re">🍳</span><h3>小炒王</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">豬肉</span><span class="tag desc">五花腩、蝦乾、韭菜</span></div></a>
-<a class="rcard" href="salmon.html"><div class="rhead"><span class="re">🐟</span><h3>三文魚低卡料理</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">魚類</span><span class="tag desc">三文魚、豆腐｜低卡</span></div></a>
-<a class="rcard" href="bok-choy.html"><div class="rhead"><span class="re">🥬</span><h3>蒜薑炒青江菜絲</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">素食</span><span class="tag desc">快手｜去菜味靠刀工</span></div></a>
-<a class="rcard" href="chicken-mushroom.html"><div class="rhead"><span class="re">🍗</span><h3>法式蘑菇忌廉燉大雞髀</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">雞肉</span><span class="tag desc">約30分鐘｜高蛋白</span></div></a></div>
-<div class="tabpanel" id="tab-主食" hidden><a class="rcard" href="curry-rice.html"><div class="rhead"><span class="re">🍛</span><h3>日式咖喱雞飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">雞肉</span><span class="tag desc">一鍋到底｜4 人份</span></div></a>
-<a class="rcard" href="bibimbap.html"><div class="rhead"><span class="re">🥗</span><h3>素食韓式拌飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">素食</span><span class="tag desc">拌飯醬自調</span></div></a>
-<a class="rcard" href="mushroom-rice.html"><div class="rhead"><span class="re">🍄</span><h3>黑椒忌廉蘑菇飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">素食</span><span class="tag desc">還原 KFC｜可轉雞湯（避牛肉）</span></div></a>
-<a class="rcard" href="tomato-chicken-pasta.html"><div class="rhead"><span class="re">🍝</span><h3>番茄蒜香雞肉闊麵</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">雞肉</span><span class="tag desc">番茄、忌廉｜高蛋白</span></div></a>
-<a class="rcard" href="tomato-shrimp-pasta.html"><div class="rhead"><span class="re">🍤</span><h3>番茄蒜香蝦闊麵</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">蝦</span><span class="tag desc">番茄、忌廉｜原版</span></div></a></div>
+<div class="tabs meat-tabs">
+<button class="tab tmeat active" data-meat="all">全部<span class="n">14</span></button>
+<button class="tab tmeat" data-meat="牛">🐂 牛<span class="n">2</span></button>
+<button class="tab tmeat" data-meat="雞">🐔 雞<span class="n">4</span></button>
+<button class="tab tmeat" data-meat="豬">🐷 豬<span class="n">1</span></button>
+<button class="tab tmeat" data-meat="魚">🐟 魚<span class="n">1</span></button>
+<button class="tab tmeat" data-meat="海鮮">🦐 海鮮<span class="n">2</span></button>
+<button class="tab tmeat" data-meat="其他">🍽️ 其他<span class="n">4</span></button>
+</div>
+<div class="filter-line">共 <span id="filter-count">14 道</span></div>
+<div class="rcards">
+<a class="rcard" href="miso-soup.html" data-type="湯" data-meat="其他"><div class="rhead"><span class="re">🍲</span><h3>秋季溫潤去燥湯</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">其他</span><span class="tag desc">豆腐、海帶｜去燥</span></div></a>
+<a class="rcard" href="beef-ribs.html" data-type="餸" data-meat="牛"><div class="rhead"><span class="re">🥩</span><h3>蘑菇牛仔骨</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">牛</span><span class="tag desc">牛仔骨、蘑菇</span></div></a>
+<a class="rcard" href="tomato-beef.html" data-type="餸" data-meat="牛"><div class="rhead"><span class="re">🍅</span><h3>番茄豆腐燜牛肉</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">牛</span><span class="tag desc">一鍋到底｜減脂、少油高蛋白</span></div></a>
+<a class="rcard" href="siu-chao-wang.html" data-type="餸" data-meat="豬"><div class="rhead"><span class="re">🍳</span><h3>小炒王</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">豬</span><span class="tag desc">五花腩、蝦乾、韭菜</span></div></a>
+<a class="rcard" href="salmon.html" data-type="餸" data-meat="魚"><div class="rhead"><span class="re">🐟</span><h3>三文魚低卡料理</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">魚</span><span class="tag desc">三文魚、豆腐｜低卡</span></div></a>
+<a class="rcard" href="bok-choy.html" data-type="餸" data-meat="其他"><div class="rhead"><span class="re">🥬</span><h3>蒜薑炒青江菜絲</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">其他</span><span class="tag desc">快手｜去菜味靠刀工</span></div></a>
+<a class="rcard" href="chicken-mushroom.html" data-type="餸" data-meat="雞"><div class="rhead"><span class="re">🍗</span><h3>法式蘑菇忌廉燉大雞髀</h3></div><div class="tags"><span class="tag cat">餸</span><span class="tag meat">雞</span><span class="tag desc">約30分鐘｜高蛋白</span></div></a>
+<a class="rcard" href="curry-rice.html" data-type="主食" data-meat="雞"><div class="rhead"><span class="re">🍛</span><h3>日式咖喱雞飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">雞</span><span class="tag desc">一鍋到底｜4 人份</span></div></a>
+<a class="rcard" href="bibimbap.html" data-type="主食" data-meat="其他"><div class="rhead"><span class="re">🥗</span><h3>素食韓式拌飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">其他</span><span class="tag desc">拌飯醬自調</span></div></a>
+<a class="rcard" href="mushroom-rice.html" data-type="主食" data-meat="其他"><div class="rhead"><span class="re">🍄</span><h3>黑椒忌廉蘑菇飯</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">其他</span><span class="tag desc">還原 KFC｜可轉雞湯（避牛肉）</span></div></a>
+<a class="rcard" href="luffa-chicken.html" data-type="湯" data-meat="雞"><div class="rhead"><span class="re">🍗</span><h3>勝瓜浸雞</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">雞</span><span class="tag desc">餘溫浸雞嫩滑</span></div></a>
+<a class="rcard" href="shrimp-noodle-soup.html" data-type="湯" data-meat="海鮮"><div class="rhead"><span class="re">🍜</span><h3>蔥油鮮蝦湯麵</h3></div><div class="tags"><span class="tag cat">湯</span><span class="tag meat">海鮮</span><span class="tag desc">蝦頭蝦殼熬濃湯</span></div></a>
+<a class="rcard" href="tomato-chicken-pasta.html" data-type="主食" data-meat="雞"><div class="rhead"><span class="re">🍝</span><h3>番茄蒜香雞肉闊麵</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">雞</span><span class="tag desc">番茄、忌廉｜高蛋白</span></div></a>
+<a class="rcard" href="tomato-shrimp-pasta.html" data-type="主食" data-meat="海鮮"><div class="rhead"><span class="re">🍤</span><h3>番茄蒜香蝦闊麵</h3></div><div class="tags"><span class="tag cat">主食</span><span class="tag meat">海鮮</span><span class="tag desc">番茄、忌廉｜原版</span></div></a>
+</div>
 <script>
-document.querySelectorAll('.tab').forEach(function(btn){
+function applyFilter(){
+  var t = document.querySelector('.ttype.active').getAttribute('data-type');
+  var m = document.querySelector('.tmeat.active').getAttribute('data-meat');
+  document.querySelectorAll('.rcard').forEach(function(c){
+    var ok = (t === 'all' || c.getAttribute('data-type') === t)
+          && (m === 'all' || c.getAttribute('data-meat') === m);
+    c.style.display = ok ? '' : 'none';
+  });
+  var shown = document.querySelectorAll('.rcard:not([style*="none"])').length;
+  document.getElementById('filter-count').textContent = shown + ' 道';
+}
+document.querySelectorAll('.ttype').forEach(function(btn){
   btn.addEventListener('click', function(){
-    document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-    var t = btn.getAttribute('data-tab');
-    document.querySelectorAll('.tabpanel').forEach(function(p){
-      p.hidden = (p.id !== 'tab-' + t);
-    });
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    document.querySelectorAll('.ttype').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active'); applyFilter();
+  });
+});
+document.querySelectorAll('.tmeat').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.tmeat').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active'); applyFilter();
   });
 });
 </script>

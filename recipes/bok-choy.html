@@ -96,6 +96,21 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
 </head>
@@ -104,7 +119,7 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 
 <div class="wrap">
 <div class="pagetitle">🥬 蒜薑炒青江菜絲</div>
-<div class="pagesub"><span class="tag cat">餸</span><span class="tag meat">素食</span></div>
+<div class="pagesub"><span class="tag cat">餸</span><span class="tag meat">其他</span></div>
 <p class="lede">&gt; 來源：「秦客的烹讀筆記」Facebook Reel，2026-10-03</p>
 <p class="lede">&gt; 原片：https://www.facebook.com/reel/1789253592410563/</p>
 <p class="lede">&gt; 關鍵：靠刀工改造——將青江菜切成幼絲，受熱面積大增，炒出嚟完全唔同口感，連原本討厭嗰股菜味都唔見晒。Patrick 2026-10-06 晚試過，話確實好味好多。</p>
