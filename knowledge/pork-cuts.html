@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>豬肉部位點揀 · Pat Zone</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:70px}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 小知識</a></div></div>
+<div class="hero"><div class="kicker">小知識</div><h1>🐷 豬肉部位點揀</h1><p>炒定燉，買之前先決定</p></div>
+<div class="wrap">
+
+<div class="pagetitle">🐷 豬肉部位點揀：炒定燉，買之前先決定</div>
+<div class="pagesub">同樣係新鮮豬肉，點解有啲炒 3 分鐘就嫩，有啲燉成粒鐘都咬唔動？好多時唔係調味問題，而係買嗰一刻已經揀錯部位。</div>
+
+<div class="sect"><span class="e">🥩</span><h2>里肌：快炒，千祈唔好煮過頭</h2></div>
+<p>脂肪少、肉質細嫩，切薄片炒肉絲、滑肉片最啱。但最怕乾：薄片用大火一直炒，等配菜熟晒先起鑊，肉早就柴。做法：逆紋切厚薄一致嘅肉片，用少量醬油、米酒同太白粉抓醃；鑊熱分批落肉，炒到表面變色、接近熟透先盛起；蔬菜炒好之後再將肉回鑊，快速炒到全熟即起鑊。里肌唔係完全唔可以燉，但薄片長時間煮，好難保住快炒嗰種嫩度。</p>
+
+<div class="sect"><span class="e">🥓</span><h2>梅花肉：快炒、燒肉都啱</h2></div>
+<p>瘦肉之中分布住細緻油花，比純瘦嘅里肌多汁，炒肉片、煎燒肉、日式薑汁燒肉都適合。但有油花唔代表可以隨便久炒：切薄片一樣要控制火候；切厚塊就可以改用燉煮，令結締組織慢慢軟化。同一塊梅花肉，切法同時間唔同，口感可以完全唔一樣。</p>
+
+<div class="sect"><span class="e">🍲</span><h2>五花肉：油脂多，慢燉最出色，薄切一樣可以快炒</h2></div>
+<p>肥瘦層次分明，做滷肉、紅燒肉，燉到肥肉柔軟、瘦肉吸滿醬汁就最正。但五花肉唔一定要滷兩個鐘：切薄片炒蒜苗、炒高麗菜一樣好食。關鍵係厚度——薄片適合快速煸香，厚塊就需要時間令脂肪同結締組織逐漸軟化。最忌厚厚一塊五花肉當薄肉片咁隨便炒幾下，就期待佢軟嫩。</p>
+
+<div class="sect"><span class="e">🍖</span><h2>前腿肉：用途多，但要睇筋膜同切法</h2></div>
+<p>活動量較大，結締組織通常比里肌多，唔同位置嘅筋膜同脂肪分布都有差異。筋膜較少嘅部分，切薄片或肉絲可以快炒；筋膜較多、比較結實嘅部位，滷、燉會更適合。買前腿肉最容易犯嘅錯，就係只睇瘦唔瘦，完全忽略入面有幾多筋。買之前同肉檔講清楚要炒肉絲定燉肉，比淨係講「要一塊瘦肉」實際得多。</p>
+
+<div class="sect"><span class="e">🥘</span><h2>豬腱肉：最適合慢慢滷，千祈唔好硬炒</h2></div>
+<p>筋腱同結締組織明顯，肉質緊實，直接厚切快炒好容易又硬又難咬。但換成小火慢滷就完全唔同：結締組織入面嘅膠原蛋白喺適當濕熱同時間下逐漸轉成明膠，肉會變軟，仲帶獨特嘅筋肉口感，滷豬腱、紅燒、燉湯都啱。不過慢燉唔係越耐越好——燉到筋軟、肉輕鬆咬得斷就夠，繼續燉到肌肉纖維全部散開，瘦肉部分反而會變乾柴。</p>
+
+<div class="sect"><span class="e">🍖</span><h2>排骨：同樣叫排骨，煮法都唔同</h2></div>
+<p>小排、肋排、帶軟骨嘅排骨，肉量、脂肪同結締組織都唔一樣。想做糖醋排骨，揀適合切小塊、容易煮熟嘅部位，先處理到熟透再快速裹汁；想煮排骨湯，揀帶骨、帶啲筋膜同肉嘅部位，小火慢慢燉出風味。厚厚嘅帶骨排骨直接當薄肉片快炒，外面乾晒，近骨頭嘅位置可能仲未熟透。</p>
+
+<div class="sect"><span class="e">✅</span><h2>買肉四個快速判斷</h2></div>
+<p><strong>1. 睇筋膜：</strong>筋膜少、肉質細嫩嘅部位，通常適合短時間料理；筋膜明顯、結締組織多嘅部位，往往更適合濕熱慢燉。<br>
+<strong>2. 睇油花：</strong>油花適中嘅肉，通常比較容易保持多汁；脂肪好少嘅瘦肉，快炒時尤其要小心唔好過度加熱。<br>
+<strong>3. 睇厚度：</strong>同一種肉，薄片同厚塊適合嘅加熱時間完全唔同——薄片快炒，厚塊就要按部位調整煎、燉或滷嘅時間。<br>
+<strong>4. 睇料理目的：</strong>想食滑嫩肉片，就揀適合快炒嘅部位；想食軟嫩滷肉，就揀有適量脂肪同結締組織嘅部位。唔好買完肉先硬將所有煮法套上去。</p>
+
+<div class="sect"><span class="e">💡</span><h2>兩個常見誤解</h2></div>
+<p>炒肉硬，唔一定係火唔夠大——好多時係炒太耐，水分流失就變柴。燉肉硬，唔一定係時間唔夠——火力太猛、液體不足，或者瘦肉長時間過度加熱，一樣會越煮越乾。真正識煮肉，唔係永遠追求大火或者小火，而係知道呢塊肉需要乜嘢。</p>
+
+<div class="sect"><span class="e">🎯</span><h2>一句總結</h2></div>
+<p>買豬肉最值得問嘅，唔係單純一句「呢塊嫩唔嫩」，而係先決定今日要做乜菜，再揀適合嘅部位。同樣一塊肉，有人炒得香嫩，有人煮得乾柴，差別往往唔係調味，而係有冇用啱方法。</p>
+
+<p style="color:var(--muted);font-size:14px;margin-top:30px">整理自 Facebook「美食論壇」2026-10-27 帖文，內容經重新整理濃縮。</p>
+
+</div>
+<footer>PAT ZONE</footer>
+</body>
+</html>
