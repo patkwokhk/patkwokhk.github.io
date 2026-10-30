@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>黑椒忌廉蘑菇飯 · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -16,7 +25,7 @@
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
-  line-height:1.8;font-size:17px;padding-bottom:70px}
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
 .wrap{max-width:700px;margin:0 auto;padding:0 20px}
 a{color:var(--acc);text-decoration:none}
 /* ---------- top bar ---------- */
@@ -96,6 +105,15 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:13px;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
 /* ---------- tabs ---------- */
 .tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
   display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
@@ -113,9 +131,10 @@ a{color:var(--acc);text-decoration:none}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 食譜</a></div></div>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="index.html">← 食譜</a></div></div>
 
 <div class="wrap">
 <div class="pagetitle">🍄 黑椒忌廉蘑菇飯（還原KFC）</div>
@@ -126,6 +145,8 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 <div class="steps"><h2>👨‍🍳 做法</h2><ol><li>小棕菇每粒切成 4 份。</li><li>大火落鑊，唔落油，將蘑菇煎香至軟身出水。</li><li>倒入牛肉湯（蓋過蘑菇），細火煮 10 分鐘。</li><li>另起細鍋，牛油煮溶後加入麵粉，炒成 roux（麵糊）。</li><li>將 roux 倒入蘑菇湯中，不斷攪拌，煮至醬汁濃稠。</li><li>最後加入 whipping cream 同黑椒碎，攪勻即成。</li><li>將黑椒忌廉蘑菇醬淋上白飯即食。</li></ol></div>
 <div class="tips"><h2>💡 貼士</h2><ul><li>蘑菇先乾煎唔落油，逼出水份先香。</li><li>Roux 要逐少落，邊落邊攪，唔係易起粒。</li><li>黑椒碎最後先落，香味最出。</li></ul></div>
 </div>
-<footer>PAT ZONE</footer>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/" class="on"><span class="ti">🍳</span>家常便飯</a><a href="/notes/"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
 </html>
