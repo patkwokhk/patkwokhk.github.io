@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>番茄蒜香雞肉闊麵 · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -16,7 +25,7 @@
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
-  line-height:1.8;font-size:17px;padding-bottom:70px}
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
 .wrap{max-width:700px;margin:0 auto;padding:0 20px}
 a{color:var(--acc);text-decoration:none}
 /* ---------- top bar ---------- */
@@ -96,6 +105,15 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:13px;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
 /* ---------- tabs ---------- */
 .tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
   display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
@@ -113,9 +131,10 @@ a{color:var(--acc);text-decoration:none}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 食譜</a></div></div>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="index.html">← 食譜</a></div></div>
 
 <div class="wrap">
 <div class="pagetitle">🍝 番茄蒜香雞肉闊麵</div>
@@ -126,6 +145,8 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 <div class="steps"><h2>👨‍🍳 做法</h2><ol><li>雞肉用鹽、黑椒、少許生粉醃 10 分鐘。</li><li>大鍋滾水加鹽，落闊麵按包裝時間煮至 al dente，留返一碗麵水，瀝乾備用。</li><li>同時燒熱深鑊／平底鑊，落橄欖油，大火將雞肉煎至兩面金黃、八成熟，盛起備用。</li><li>原鑊轉中火，落牛油，爆香蒜碎至金黃微焦（唔好爆燶，會苦）。</li><li>倒入罐頭番茄，壓碎，大火煮滾後轉細火煮 5 分鐘，等汁收杰少少。</li><li>倒淡忌廉，攪勻，加糖、鹽、黑椒、乾香草調味，試味。</li><li>將雞肉倒返入汁，細火煮 2–3 分鐘至全熟入味。</li><li>落闊麵，撒巴馬臣芝士，大火快速兜勻，等每條麵都掛上汁；太杰就加少少麵水調稀。</li><li>上碟，撒多啲芝士碎同羅勒葉即成。</li></ol></div>
 <div class="tips"><h2>💡 貼士</h2><ul><li>蒜碎爆到金黃就好，燶咗成個汁會苦，寧願早少少落番茄。</li><li>罐頭番茄偏酸，半茶匙糖係關鍵，唔落會成個汁好𠝹。</li><li>麵水有澱粉，係天然增稠劑，留返碗傍身好過臨時加水。</li><li>雞胸易柴，煎到八成就拎起，返鑊煮多 2–3 分鐘啱啱好；用雞髀肉就冇咁易柴。</li><li>想再濃郁：忌廉加到 250ml，或者臨上碟加多塊牛油兜勻。</li><li>減脂版：忌廉減半，改用 100ml 牛奶＋多啲麵水，芝士照落少少吊味。</li></ul></div>
 </div>
-<footer>PAT ZONE</footer>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/" class="on"><span class="ti">🍳</span>家常便飯</a><a href="/notes/"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
 </html>

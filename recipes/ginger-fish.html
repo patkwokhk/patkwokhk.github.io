@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>薑蔥焗魚腩 · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -16,7 +25,7 @@
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
-  line-height:1.8;font-size:17px;padding-bottom:70px}
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
 .wrap{max-width:700px;margin:0 auto;padding:0 20px}
 a{color:var(--acc);text-decoration:none}
 /* ---------- top bar ---------- */
@@ -96,6 +105,15 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:13px;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
 /* ---------- tabs ---------- */
 .tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
   display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
@@ -113,9 +131,10 @@ a{color:var(--acc);text-decoration:none}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 食譜</a></div></div>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="index.html">← 食譜</a></div></div>
 
 <div class="wrap">
 <div class="pagetitle">🐟 薑蔥焗魚腩</div>
@@ -126,6 +145,8 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 <div class="steps"><h2>👨‍🍳 做法</h2><ol><li><strong>處理魚腩</strong>：魚腩嘅黑膜一定要刮乾淨——嗰層就係腥味來源；沖洗乾淨即可。魚夠靚唔使過多處理，唔好浸薑蔥水，浸咗鮮味會流失。</li><li><strong>切花刀</strong>：沿魚骨位切幾刀落去，唔好切斷，切到約一半深就得。切咗花刀，醃料易入味，唔使醃太耐。</li><li><strong>調醬</strong>：蔥花、薑蓉、蒜蓉放碗，加陳皮絲同豆豉醬，淋熱油激香，再落鹽、糖、頭抽、生粉拌勻。</li><li><strong>醃魚</strong>：醬汁均勻淋上魚腩，醃 10 分鐘。</li><li><strong>爆香墊底</strong>：琺瑯鍋（或砂鍋）落油，放入薑片、紅蔥頭、蒜粒炒香。</li><li><strong>焗魚</strong>：放入魚腩，連醃魚嘅汁一齊倒落去；沿鍋邊淋一圈米酒。一滴水都唔使放，冚蓋焗熟。</li><li><strong>上枱</strong>：開蓋撒大量蔥花，原鍋上枱。</li></ol></div>
 <div class="tips"><h2>💡 貼士</h2><ul><li>判斷熟未：用筷子試最厚嗰處，可以輕鬆插落去即係熟。原片冇講明焗幾多分鐘，按魚腩厚度估算中細火約 8–10 分鐘（估算值，以筷子測試為準，唔熟就冚蓋焗多陣）。</li><li>豆豉醬本身好咸，落鹽要就住，半茶匙夠晒；糖係用嚟中和咸味，唔好慳。</li><li>陳皮絲係秘訣：去腥又增香，唔好漏。</li><li>全程唔加水係呢個做法嘅重點：魚汁同醬汁自己出水，味道先夠濃。</li><li>鯇魚腩多骨，食嗰陣小心；家中有小朋友可以留意挑骨。</li><li>✅ 飲食檢查：魚腩高蛋白，無牛、無蝦、無芫茜，都食得，全家增肌都啱，單一版本全家食。</li></ul></div>
 </div>
-<footer>PAT ZONE</footer>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/" class="on"><span class="ti">🍳</span>家常便飯</a><a href="/notes/"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
 </html>
