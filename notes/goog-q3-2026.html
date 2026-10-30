@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alphabet（GOOG）Q3 2026 財報解剖整理 · Pat Zone</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:70px}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 投資筆記</a></div></div>
+<div class="hero"><div class="kicker">投資筆記 · 個股</div><h1>📊 Alphabet（GOOG）</h1><p>Q3 2026 財報解剖整理</p></div>
+<div class="wrap">
+
+<div class="pagetitle">📊 Alphabet（GOOG）Q3 2026 財報解剖整理</div>
+<div class="pagesub">2026-10-30 · 整理自 FOMO 研究院／Fomosoc 財報解剖；原文後半為付費內容，本文整理免費部分及 Facebook 精華帖</div>
+<div class="srcbox">原文連結<br>
+<a href="https://www.facebook.com/61573146584049/posts/122203208102771552/">FOMO 研究院 Facebook 精華帖（2026-10-30）</a><br>
+<a href="https://www.fomosoc.com/p/ai-google-2610">Fomosoc 財報解剖全文（2026-10-29）</a></div>
+
+<p class="lede">Alphabet 2026 年 10 月 28 日收市後公布 Q3 業績：收入 1,275.8 億美元，列帳 EPS 2.12 美元（經調整 2.67 美元），Google Cloud 收入按年 +103% 至 307 億美元，搜尋廣告 633.5 億美元，自由現金流 −90.7 億美元。業績後股價單日跌 12.29%，市值蒸發約 4,000 億美元。</p>
+
+<div class="sect"><span class="e">1️⃣</span><h2>EPS 點解差咁遠：先清會計雜音</h2></div>
+<p>列帳 EPS 2.12 美元低過市場預期約 3 美元，主要係會計認列：公司持有嘅 SpaceX 與 Anthropic 股權，上季帶來大額帳面收益，今季回吐約 87 億美元評價損失，齋呢筆已扣減 EPS 約 0.55 美元。業外投資嘅帳面波動，唔係核心業務賺蝕。</p>
+
+<div class="sect"><span class="e">2️⃣</span><h2>搜尋：量冇事，價出事</h2></div>
+<p>FOMO 研究院用「好手氣（I'm Feeling Lucky）」掣做比喻：嗰個掣跳過晒廣告直去答案頁，係 Google 與生俱來嘅悖論——技術好到直接俾答案，就會殺死自己嘅廣告生意；AI Mode 就係放大版嘅「好手氣」。拆開睇：查詢量增速創五年新高，AI Mode 查詢長度係傳統搜尋 3 倍，仲帶嚟新需求；問題喺每個 AI 查詢嘅變現率低過傳統搜尋。好消息係新廣告格式追緊上嚟，早期數據指 AI Mode 贊助產品點擊率已接近自然搜尋結果。</p>
+
+<div class="sect"><span class="e">3️⃣</span><h2>減速有幾真：高基期拆解</h2></div>
+<p>搜尋收入增速由上季 16.8% 跌到 12%，管理層罕有承認 AI 搜尋拖累營收。但 Fomosoc 拆開高基期效應：搜尋兩年累積增速一直約 30%，今季 28.2%——表面 4.8 個百分點跌幅入面，2.5 點係去年太好造成嘅錯覺，真正減速約 2.3 至 2.9 個百分點。不過市場原預期 14.9%，實際得 12%，所以唔係完全錯殺。</p>
+
+<div class="sect"><span class="e">4️⃣</span><h2>Cloud 翻倍嘅含金量問題</h2></div>
+<p>Cloud 收入 +103% 至 307 億美元、訂單積壓 5,610 億美元，自研 TPU 系統成為實質收入引擎，外部客戶包括 Anthropic、Apple。市場嘅疑問係：翻倍增長入面混咗賣 TPU 硬體嘅一次性收入，持續性有幾高？呢部分原文放喺付費章節再拆。</p>
+
+<div class="sect"><span class="e">5️⃣</span><h2>現金流嗰筆數</h2></div>
+<p>自由現金流連續兩季負數，今季流出 90.7 億美元；全年資本開支指引 1,950 億至 2,050 億美元，管理層仲話 2027 年開支顯著上升。舊引擎出現裂痕、新引擎含金量受質疑、現金快速消耗，三件事加埋就係今次拋售嘅全貌。</p>
+
+<div class="sect"><span class="e">6️⃣</span><h2>作者立場</h2></div>
+<p>Fomosoc 作者冇持有 Google：佢原本諗住「若因為雲端算力分配問題而跌就係買點」，但今次出事嘅係搜尋呢個核心引擎，抄底邏輯根本改變。市場而家定價嘅，係「搜尋變現空窗期」嘅折價；下一個關鍵，就係 AI Mode 變現效率能否收斂到足夠高。</p>
+
+<p>事實整理，無買賣建議。數字來源：公司 Q3 2026 業績公布、FOMO 研究院、Fomosoc（2026-10-29 至 10-30）。</p>
+
+</div>
+<footer>PAT ZONE</footer>
+</body>
+</html>
