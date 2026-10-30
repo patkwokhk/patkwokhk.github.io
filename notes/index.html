@@ -96,9 +96,12 @@ a{color:var(--acc);text-decoration:none}
 .ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
 .ncard p{font-size:14px;color:var(--muted)}
 .ncard .arrow{float:right;font-size:20px;color:var(--acc)}
-.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
 .tnode h3{font-size:19px}
 .tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:13px;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
 .tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
 .tkids .ncard{margin:0;position:relative}
 .tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
@@ -126,10 +129,10 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
 <div class="wrap">
 <div class="sect"><span class="e">📈</span><h2>個股</h2><span class="n">4 篇</span></div>
 <a class="ncard" href="2899.html"><span class="arrow">→</span><h3>📊 紫金礦業（2899）四方共識完整報告</h3><p>2026-10-09 · 四個 AI 助手討論＋拍板</p></a>
-<div class="tnode"><h3>📊 Google（GOOG）</h3><span class="n">兩篇觀點對照</span></div><div class="tkids">
+<details class="tree" open><summary class="tnode"><span class="chev">▸</span><h3>📊 Google（GOOG）</h3><span class="n">兩篇觀點對照</span></summary><div class="tkids">
 <a class="ncard" href="goog-q3-2026.html"><span class="arrow">→</span><h3>📊 Alphabet（GOOG）Q3 2026 財報解剖整理</h3><p>2026-10-30 · FOMO 研究院／Fomosoc 整理</p></a>
 <a class="ncard" href="goog-logic-2026.html"><span class="arrow">→</span><h3>📊 Google 大跌可以抄底嗎？——邏輯投資觀點整理</h3><p>2026-10-30 · 邏輯投資（Vocus）整理</p></a>
-</div>
+</div></details>
 <a class="ncard" href="intc-q3-2026.html"><span class="arrow">→</span><h3>📊 Intel（INTC）Q3 2026 財報整理</h3><p>2026-10-30 · Sheraton Wu 財報分析整理</p></a>
 <div class="sect"><span class="e">🔭</span><h2>研究專題</h2><span class="n">1 篇</span></div>
 <a class="ncard" href="mmth.html"><span class="arrow">→</span><h3>📊 MMTH 闊度分叉研究共識</h3><p>2026-10-07 · 四個 AI 助手三輪討論共識</p></a>
