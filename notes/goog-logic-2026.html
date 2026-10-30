@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google 大跌可以抄底嗎？——邏輯投資觀點整理 · Pat Zone</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:70px}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 投資筆記</a></div></div>
+<div class="hero"><div class="kicker">投資筆記 · 個股</div><h1>📊 Google（GOOG）</h1><p>邏輯投資抄底觀點整理</p></div>
+<div class="wrap">
+
+<div class="pagetitle">📊 Google 大跌可以抄底嗎？——邏輯投資觀點整理</div>
+<div class="pagesub">2026-10-30 · 整理自台灣「邏輯投資」Vocus 沙龍〈Google 股價大跌，可以抄底嗎？〉（2026-10-29）；正文之後另有留言區續文，本文整理正文部分</div>
+<div class="srcbox">原文連結<br>
+<a href="https://vocus.cc/post/6ae33543fd897800012cf698">邏輯投資〈Google 股價大跌，可以抄底嗎？〉（2026-10-29）</a><br>
+<a href="https://vocus.cc/salon/LogicInvestment">邏輯投資沙龍首頁</a></div>
+
+<p class="lede">來源簡介：「邏輯投資」是台灣投資分析沙龍，主打市場觀察解讀、台股潛力股深研與宏觀評論。作者本人持有 Google，結論是「有跌出價值，但短期市場反應需要觀察」——自己按兵不動，沒有持倉的則可觀察波動、伺機分批建倉。</p>
+
+<div class="sect"><span class="e">1️⃣</span><h2>市場真正驚的三組數據</h2></div>
+<p>作者指拋售核心不是 EPS 2.12 美元的帳面因素，而是：自由現金流由第二季 −58.6 億美元擴大到第三季 −90.7 億美元；2026 全年資本開支維持 1,950 至 2,050 億美元、2027 年還要顯著增加；搜尋廣告收入第三季只成長 12%，第四季指引約 10%。對應兩大擔憂：核心搜尋廣告被 OpenAI、Anthropic 分走流量，AI 問答可能動搖商業基礎；以及燒錢太快，將來或要發債、增資。</p>
+
+<div class="sect"><span class="e">2️⃣</span><h2>點解唔好急住抄底</h2></div>
+<p>如果市場質疑的是商業模式本身，機構可能陸續調整倉位，波動未必完，唔好急著做「眾人皆醉我獨醒」嗰個。接著還有 Amazon 財報會牽動同業情緒。作者類比 2026 年初市場懷疑 AI 侵蝕軟件股商業模式的那輪大清洗：共識未定時，冷眼旁觀是合理做法。</p>
+
+<div class="sect"><span class="e">3️⃣</span><h2>作者反駁：可能太早下定論</h2></div>
+<p>第三季廣告放緩有非業務因素：匯損、歐盟取消小額包裹關稅免稅、6 月世界盃提前拉動廣告投放；第四季指引放緩亦受美元升值的匯率逆風影響。單用一季數據就宣判廣告業務崩盤，言之過早。</p>
+
+<div class="sect"><span class="e">4️⃣</span><h2>市場忽略的兩套反擊策略</h2></div>
+<p>一、AI 模式廣告推向國際，美國推出「多輪對話廣告」：用戶在 AI 摘要連續追問，商業意圖越問越精準，AI 動態插入高轉換率的商品卡片，精準度高，有機會收取更高廣告費。二、通用商務協定（UCP）加通用購物車（Universal Cart）加代理支付協定：公司稱已獲 Nike、Chewy 等數十萬品牌採用，消費者可跨搜尋、YouTube、Gemini 用同一個購物車，站內一鍵結帳，日後還可由 AI 代理代購。</p>
+
+<div class="sect"><span class="e">5️⃣</span><h2>後續睇什麼</h2></div>
+<p>作者判斷，接下來應看上述兩套措施的實際貢獻與消費者接受度，而不是單季增長放緩。與同日 FOMO 研究院／Fomosoc 的解剖對照：Fomosoc 認為出事的是搜尋核心、抄底邏輯已變；邏輯投資則認為市場太早下定論，跌出價值但不用急。</p>
+
+<p>事實整理，無買賣建議。數字來源：邏輯投資（2026-10-29）、Alphabet Q3 2026 業績公布。</p>
+
+</div>
+<footer>PAT ZONE</footer>
+</body>
+</html>
