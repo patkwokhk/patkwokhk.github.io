@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intel（INTC）Q3 2026 財報整理 · Pat Zone</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:70px}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><a class="backlink" href="index.html">← 投資筆記</a></div></div>
+<div class="hero"><div class="kicker">投資筆記 · 個股</div><h1>📊 Intel（INTC）</h1><p>Q3 2026 財報整理</p></div>
+<div class="wrap">
+
+<div class="pagetitle">📊 Intel（INTC）Q3 2026 財報整理</div>
+<div class="pagesub">2026-10-30 · 整理自 Sheraton Wu 財報分析帖（按 Intel SEC 8-K 新聞稿撰寫；核心數字已對公司官方新聞稿核對）</div>
+<div class="srcbox">原文連結<br>
+<a href="https://www.facebook.com/groups/404616721590637/permalink/1465971262121839/">Sheraton Wu Facebook 分析帖（2026-10-30）</a></div>
+
+<p class="lede">Intel 2026 年 10 月 29 日盤後公布 Q3 財報：營收 165 億美元（按年 +21%），調整後 EPS 0.52 美元，勝市場預估；資料中心收入按年 +78%。但 Q4 指引遠遜預期，股價盤後跌約 16 至 17%。</p>
+
+<div class="sect"><span class="e">1️⃣</span><h2>Q3 成績：三項全勝指引</h2></div>
+<p>營收 165 億美元，公司指引 158 至 168 億；調整後 EPS 0.52 美元，市場預估 0.40，多三成；調整後毛利率 44.1%（指引 42%）；調整後營業利益率 19.6%，去年同期得 11.2%。</p>
+
+<div class="sect"><span class="e">2️⃣</span><h2>股價點解跌：Q4 指引太弱</h2></div>
+<p>Q4 營收指引 150 至 160 億美元（市場預估 171 億），調整後 EPS 指引 0.25 美元（預估 0.44，少 43%），調整後毛利率指引 38%，比 Q3 跌 6 個百分點而新聞稿冇解釋。財務長仲話 PC 放緩至少持續到明年上半年。背景係股價年內曾由 37 美元升到 141 美元，期望本身好高。</p>
+
+<div class="sect"><span class="e">3️⃣</span><h2>業務拆解：AI 在長，PC 在縮</h2></div>
+<p>資料中心與 AI（DCAI）73 億美元、按年 +78%，營業利益率 42%，管理層稱 Xeon 需求非常驚人、公司形容為 15 年來最強資料中心增長；PC（CCPG）81 億、按年 −5%，上季仲係 +13%；晶圓代工 67 億、+58%，但大部分係自家產品，營業虧損 19 億美元，虧損收窄中。一句講晒：伺服器增長暫時補唔上 PC 收縮。</p>
+
+<div class="sect"><span class="e">4️⃣</span><h2>AI 與代工進展</h2></div>
+<p>Oracle 簽多年合作，雲端將用下一代 Xeon（Diamond Rapids）；推論 GPU D-series 公布更多細節；14A 製程設計工具 0.9 版已交客戶。市場最想聽嘅外部代工大客戶名單，今次新聞稿冇點名任何一家。</p>
+
+<div class="sect"><span class="e">5️⃣</span><h2>資產負債表：發股票唔借錢</h2></div>
+<p>8 月完成 230 億美元公開增資，股數增加 6.3%，老股東被稀釋；換嚟現金加短期投資 540 億美元、總債務 501 億，由年初淨負債 92 億變成淨現金約 39 億。另要注意：託管予美國商務部嘅股份令列帳盈餘跟自家股價大上大落，睇 Intel 盈利要用調整後數字。</p>
+
+<div class="sect"><span class="e">6️⃣</span><h2>估值與觀察重點</h2></div>
+<p>以盤後約 76 美元計，市值約 4,050 億美元，約 2027 年預估盈餘 35 倍（財報前預估，指引後料下修）。下一個觀察重點：Q4 毛利率點解跌 6 點、Xeon 產能幾時跟上、有冇外部代工客戶。原文作者披露未持有 INTC。</p>
+
+<p>事實整理，無買賣建議。數字來源：Intel Q3 2026 官方新聞稿、Sheraton Wu 分析帖（2026-10-30）。</p>
+
+</div>
+<footer>PAT ZONE</footer>
+</body>
+</html>
