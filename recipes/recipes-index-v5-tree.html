@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#E0642B">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="秋水重地">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>PATZONE · 家常便飯 · 私房食譜庫</title>
+  <style>
+    /* Reset & Base Fonts */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang HK", "Microsoft JhengHei", sans-serif;
+      background-color: #FBF9F5;
+      color: #1E293B;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 249, 245, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid #E2E8F0;
+    }
+    .nav-bar {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #E0633C, #F59E0B);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(224, 99, 60, 0.25);
+    }
+    .brand-text-pat {
+      color: #1E293B;
+    }
+    .brand-text-zone {
+      color: #E0633C;
+    }
+    .brand-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: #E2E8F0;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+    }
+    .nav-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+      background: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+    .nav-home-btn:hover {
+      color: #E0633C;
+      border-color: #CBD5E1;
+      background: #F8FAFC;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(180deg, #F5EFE6 0%, #FBF9F5 100%);
+      border-bottom: 1px solid #E2E8F0;
+      padding: 40px 0 32px 0;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFEDD5;
+      color: #9A3412;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+    .hero-title span {
+      color: #E0633C;
+    }
+    .hero-desc {
+      margin-top: 12px;
+      font-size: 1.05rem;
+      color: #475569;
+      max-width: 680px;
+      line-height: 1.6;
+    }
+    .stats-bar {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .stat-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E0633C;
+      margin-right: 8px;
+    }
+
+    /* Controls & Filter Section */
+    .filter-panel {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 28px 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+    }
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 44px 14px 44px;
+      border-radius: 14px;
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      font-size: 0.95rem;
+      color: #1E293B;
+      transition: all 0.2s ease;
+    }
+    .search-input:focus {
+      outline: none;
+      background: #FFFFFF;
+      border-color: #E0633C;
+      box-shadow: 0 0 0 3px rgba(224, 99, 60, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .clear-search {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #94A3B8;
+      cursor: pointer;
+      display: none;
+    }
+
+    .tabs-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid #F1F5F9;
+    }
+    .filter-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+    .cat-tab {
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: #475569;
+      transition: all 0.2s;
+    }
+    .cat-tab:hover {
+      background: #E2E8F0;
+    }
+    .cat-tab.active {
+      background: #E0633C;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(224, 99, 60, 0.3);
+    }
+
+    .chips-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding-top: 12px;
+      white-space: nowrap;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .chips-row::-webkit-scrollbar {
+      display: none;
+    }
+    .meat-chip {
+      padding: 6px 12px;
+      border-radius: 10px;
+      border: 1px solid #E2E8F0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #475569;
+      background: #FFFFFF;
+      transition: all 0.2s;
+    }
+    .meat-chip:hover {
+      border-color: #94A3B8;
+    }
+    .meat-chip.active {
+      background: #1E293B;
+      color: #FFFFFF;
+      border-color: #1E293B;
+    }
+
+    /* Action bar */
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      color: #64748B;
+      font-weight: 500;
+    }
+    .results-count {
+      font-weight: 800;
+      color: #E0633C;
+      font-size: 1.1rem;
+    }
+    .reset-link {
+      color: #64748B;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .reset-link:hover {
+      color: #E0633C;
+    }
+
+    /* Recipe Grid & Cards */
+    .recipes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .recipe-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .recipe-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(224, 99, 60, 0.4);
+      box-shadow: 0 20px 30px -10px rgba(224, 99, 60, 0.15), 0 8px 16px -6px rgba(0,0,0,0.04);
+    }
+    .card-header {
+      padding: 18px 20px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .card-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .category-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+    .time-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.9);
+      color: #334155;
+      padding: 3px 10px;
+      border-radius: 999px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .card-header-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .dish-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+    }
+    .highlight-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #FFFFFF;
+      color: #1E293B;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .card-body {
+      padding: 20px;
+      flex-grow: 1;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+    .recipe-card:hover .card-title {
+      color: #E0633C;
+    }
+    .card-subtitle {
+      font-size: 0.75rem;
+      color: #64748B;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.55;
+      margin-top: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .ingredients-row {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #F1F5F9;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+    }
+    .ing-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #94A3B8;
+      text-transform: uppercase;
+      margin-right: 4px;
+    }
+    .ing-badge {
+      font-size: 0.75rem;
+      background: #F1F5F9;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    .card-footer {
+      padding: 0 20px 20px 20px;
+    }
+    .card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      color: #334155;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .recipe-card:hover .card-btn {
+      background: #E0633C;
+      color: #FFFFFF;
+      border-color: transparent;
+    }
+    .card-btn .arrow {
+      transition: transform 0.2s;
+    }
+    .recipe-card:hover .card-btn .arrow {
+      transform: translateX(4px);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      display: none;
+    }
+    .empty-icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+    }
+    .empty-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1E293B;
+    }
+    .empty-desc {
+      font-size: 0.9rem;
+      color: #64748B;
+      margin-top: 6px;
+    }
+    .empty-btn {
+      margin-top: 18px;
+      padding: 10px 22px;
+      border-radius: 12px;
+      background: #E0633C;
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 28px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #F1F5F9;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .modal-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #F8FAFC;
+      border: 1px solid #F1F5F9;
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      margin: 18px 0;
+    }
+    .metric-label {
+      font-size: 0.7rem;
+      color: #94A3B8;
+      font-weight: 600;
+    }
+    .metric-val {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #1E293B;
+      margin-top: 2px;
+    }
+    .modal-link-btn {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      background: #E0633C;
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-top: 24px;
+      box-shadow: 0 4px 12px rgba(224, 99, 60, 0.25);
+    }
+
+    /* Footer */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid #E2E8F0;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #64748B;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 1.85rem; }
+      .recipes-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- Tree groups + App shell (App 化第 3 步) ---------- */
+    .recipes-grid { display: block; }
+    .rtree { margin-bottom: 30px; }
+    .rtnode { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none;
+      background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 14px; padding: 12px 16px; margin-bottom: 16px; }
+    .rtnode::-webkit-details-marker { display: none; }
+    .rchev { color: #E0642B; font-size: 18px; font-weight: 700; display: inline-block; transition: transform .15s ease; }
+    details.rtree[open] > .rtnode .rchev { transform: rotate(90deg); }
+    .rlabel { font-size: 1.05rem; font-weight: 800; color: #1E293B; }
+    .rcount { margin-left: auto; background: #FDEEE1; color: #B34A1D; font-size: .8rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; }
+    .rkids { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    @media (max-width: 640px) { .rkids { grid-template-columns: 1fr; } }
+    body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+    .app-tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: flex;
+      background: rgba(255,251,244,.97); border-top: 1px solid #F0DFC8;
+      padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -2px 12px rgba(90,50,20,.07); }
+    .app-tabbar a { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 1px;
+      padding: 7px 0 6px; text-decoration: none; color: #A08B76; font-size: 11px; line-height: 1.25;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang HK", sans-serif; }
+    .app-tabbar a .ti { font-size: 21px; line-height: 1.1; }
+    .app-tabbar a.on { color: #E0642B; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-bar">
+      <a href="../index.html" class="brand-logo">
+        <div class="brand-icon">🍳</div>
+        <div>
+          <span class="brand-text-pat">秋水</span><span class="brand-text-zone">重地</span>
+          <span class="brand-tag">食譜庫</span>
+        </div>
+      </a>
+      <a href="../index.html" class="nav-home-btn">
+        <span>← 首頁</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">🌿 家常溫暖滋味 · 純粹用心</div>
+      <h1 class="hero-title">家常便飯 <span>· 暖心餐桌</span></h1>
+      <p class="hero-desc">為家人用心慢煮每一餐。收錄 23 道精選家常湯水、主食與小炒，撳入去睇清晰材料、份量與烹飪步驟。</p>
+
+      <div class="stats-bar">
+        <div class="stat-pill"><span class="stat-dot"></span>共 23 道精選食譜</div>
+        <div class="stat-pill">🍲 3 款滋潤湯水</div>
+        <div class="stat-pill">🍳 15 道經典小菜</div>
+        <div class="stat-pill">🍚 5 款風味主食</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Filter & Search Panel -->
+    <div class="filter-panel">
+      <!-- Search Input -->
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input id="search-input" type="text" class="search-input" placeholder="搜尋菜名、食材（例如：雞、豆腐、番茄、牛仔骨）或特性...">
+        <span id="clear-search" class="clear-search">✕</span>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="tabs-row">
+        <span class="filter-label">餐別：</span>
+        <button class="cat-tab active" data-category="all">🍽️ 全部 23</button>
+        <button class="cat-tab" data-category="soup">🍲 湯 3</button>
+        <button class="cat-tab" data-category="dish">🍳 餸 15</button>
+        <button class="cat-tab" data-category="staple">🍚 主食 5</button>
+      </div>
+
+      <!-- Meat / Ingredient Chips -->
+      <div class="chips-row">
+        <span class="filter-label">食材：</span>
+        <button class="meat-chip active" data-meat="all">全部食材</button>
+        <button class="meat-chip" data-meat="chicken">🐔 雞肉 (6)</button>
+        <button class="meat-chip" data-meat="beef">🐮 牛肉 (2)</button>
+        <button class="meat-chip" data-meat="pork">🐷 豬肉 (2)</button>
+        <button class="meat-chip" data-meat="fish">🐟 魚類 (2)</button>
+        <button class="meat-chip" data-meat="seafood">🦐 海鮮 (5)</button>
+        <button class="meat-chip" data-meat="vegetarian">🥗 素食/其他 (5)</button>
+      </div>
+    </div>
+
+    <!-- Active status -->
+    <div class="results-bar">
+      <div>顯示 <span id="current-count" class="results-count">23</span> 道家常料理</div>
+      <button id="reset-filters" class="reset-link">重設所有條件</button>
+    </div>
+
+    <!-- Recipe Grid (Pre-rendered for Instant Display & Zero JS Dependency!) -->
+    <div id="recipes-grid" class="recipes-grid">
+    <details class="rtree" open data-group="chicken">
+      <summary class="rtnode"><span class="rchev">▸</span><span class="rlabel">🐔 雞肉</span><span class="rcount">7 道</span></summary>
+      <div class="rkids">
+<article class="recipe-card" data-id="steamed-chicken-luffa" data-category="soup" data-meat="chicken">
+      <div class="card-header" style="background: #FEF3C7;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FDE68A; color: #92400E;">
+            🍲 湯 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 25 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍗</span>
+          <span class="highlight-badge">餘溫浸雞嫩滑</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">勝瓜浸雞</h3>
+        
+        <p class="card-desc">利用餘溫慢慢浸熟雞肉，鎖住肉汁肉質極致嫩滑，勝瓜清甜吸收雞湯鮮味。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">走地雞</span><span class="ing-badge">勝瓜</span><span class="ing-badge">薑片</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="luffa-chicken.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="braised-chicken-thigh" data-category="dish" data-meat="chicken">
+      <div class="card-header" style="background: #FEF3C7;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FDE68A; color: #92400E;">
+            🍳 餸 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 30 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍗</span>
+          <span class="highlight-badge">法式家常 · 高蛋白</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">法式蘑菇忌廉燉大雞髀</h3>
+        
+        <p class="card-desc">雞髀煎香鎖住肉汁，與洋蔥炒香小啡菇慢火燜燉，最後淋入淡忌廉收汁，濃郁奶香超誘人。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">大雞髀</span><span class="ing-badge">小啡菇</span><span class="ing-badge">淡忌廉</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="chicken-mushroom.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="pineapple-chicken" data-category="dish" data-meat="chicken">
+      <div class="card-header" style="background: #FEF9C3;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FEF08A; color: #854D0E;">
+            🍳 餸 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 15 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍍</span>
+          <span class="highlight-badge">蓋蓋燜 10 分鐘 · 酸甜開胃</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">菠蘿雞排</h3>
+        
+        <p class="card-desc">菠蘿的天然酵素讓雞肉無比軟嫩，酸甜汁均勻裹滿每一塊雞排，開胃醒脾，大人小朋友爭住食。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">去骨雞髀肉</span><span class="ing-badge">鮮菠蘿/菠蘿片</span><span class="ing-badge">洋蔥</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="pineapple-chicken.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="crispy-salt-grilled-chicken-wings" data-category="dish" data-meat="chicken">
+      <div class="card-header" style="background: #FFEDD5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FED7AA; color: #9A3412;">
+            🍳 餸 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 10 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍗</span>
+          <span class="highlight-badge">平底鑊 7 分鐘 · 外脆內嫩</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">爆脆鹽燒雞翼</h3>
+        
+        <p class="card-desc">只用平底鑊 7 分鐘搞掂！不用油炸即可煎出玻璃般脆皮，一口咬下肉汁迸發，純粹椒鹽滋味。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">中雞翼</span><span class="ing-badge">特級味鹽</span><span class="ing-badge">黑胡椒粒</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="crispy-salt-grilled-chicken-wings.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="garlic-lemon-wings" data-category="dish" data-meat="chicken">
+      <div class="card-header" style="background: #FFEDD5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FED7AA; color: #9A3412;">
+            🍳 餸 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 15 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍗</span>
+          <span class="highlight-badge">全程中火煎香 · 酸甜開胃</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">蒜香檸檬雞翼</h3>
+        
+        <p class="card-desc">先煎皮厚嗰面，全程中火；蒜片炒香後落洋蔥、檸檬片同冰糖，糖溶化中和酸味，帶少少酸好開胃。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">中雞翼</span><span class="ing-badge">蒜片</span><span class="ing-badge">檸檬</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="garlic-lemon-wings.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="japanese-curry-chicken-rice" data-category="staple" data-meat="chicken">
+      <div class="card-header" style="background: #FEF3C7;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FDE68A; color: #78350F;">
+            🍚 主食 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 30 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍛</span>
+          <span class="highlight-badge">一鍋到底 · 4 人家庭份</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">日式咖喱雞飯</h3>
+        
+        <p class="card-desc">經典家常一鍋熟！洋蔥炒至焦糖色帶出濃醇甜味，咖喱醬汁拌入白飯，暖胃飽肚的家常靈魂。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">雞腿肉</span><span class="ing-badge">日式咖喱塊</span><span class="ing-badge">洋蔥馬鈴薯</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="curry-rice.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="tomato-garlic-chicken-pasta" data-category="staple" data-meat="chicken">
+      <div class="card-header" style="background: #FEE2E2;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FECACA; color: #991B1B;">
+            🍚 主食 · 雞肉
+          </span>
+          <span class="time-badge">⏱️ 20 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍝</span>
+          <span class="highlight-badge">高蛋白 · 濃香酸甜</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">番茄蒜香雞肉闊麵</h3>
+        
+        <p class="card-desc">手工闊麵充分掛汁！濃郁番茄紅醬加入微量忌廉調和酸度，雞肉軟嫩高蛋白，色香味俱全。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">去骨雞肉</span><span class="ing-badge">意大利闊麵</span><span class="ing-badge">羅馬熟番茄</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="tomato-chicken-pasta.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+      </div>
+    </details>
+    
+    <details class="rtree" open data-group="seafood">
+      <summary class="rtnode"><span class="rchev">▸</span><span class="rlabel">🦐 海鮮</span><span class="rcount">5 道</span></summary>
+      <div class="rkids">
+<article class="recipe-card" data-id="scallion-oil-shrimp-noodle" data-category="soup" data-meat="seafood">
+      <div class="card-header" style="background: #FFE4E6;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FECDD3; color: #9F1239;">
+            🍲 湯 · 海鮮
+          </span>
+          <span class="time-badge">⏱️ 20 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍜</span>
+          <span class="highlight-badge">蝦頭熬濃湯</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">蔥油鮮蝦湯麵</h3>
+        
+        <p class="card-desc">先用蝦頭蝦殼小火煸出紅潤蝦油與濃白湯底，蔥香四溢，麵條吸飽鮮美精華。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">鮮大蝦</span><span class="ing-badge">手工麵條</span><span class="ing-badge">小蔥</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="shrimp-noodle-soup.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="squid-seaweed" data-category="dish" data-meat="seafood">
+      <div class="card-header" style="background: #CCFBF1;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #99F6E4; color: #115E59;">
+            🍳 餸 · 海鮮
+          </span>
+          <span class="time-badge">⏱️ 15 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🦑</span>
+          <span class="highlight-badge">外脆內軟 · 唔使刀工</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">紫菜魷魚烙</h3>
+        
+        <p class="card-desc">無需複雜刀工！紫菜的海洋芳香加上鮮魷的彈牙口感，煎得金黃酥脆，下飯兼佐茶小點。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">鮮魷魚</span><span class="ing-badge">頭水紫菜</span><span class="ing-badge">紅薯粉</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="squid-seaweed.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="salted-kelp-tofu-shrimp" data-category="dish" data-meat="seafood">
+      <div class="card-header" style="background: #E0F2FE;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #BAE6FD; color: #0284C7;">
+            🍳 餸 · 海鮮
+          </span>
+          <span class="time-badge">⏱️ 10 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🦐</span>
+          <span class="highlight-badge">涼拌快手 · 清爽開胃</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">鹽昆布豆腐蝦仁</h3>
+        
+        <p class="card-desc">不用開大火的極速清爽涼拌料理！鹽昆布提鮮層次豐富，豆腐清涼滑口，蝦仁鮮甜爽脆。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">新鮮板豆腐</span><span class="ing-badge">鮮蝦仁</span><span class="ing-badge">日本鹽昆布</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="salted-kelp-tofu-shrimp.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="loofah-shrimp-steamed-egg" data-category="dish" data-meat="seafood">
+      <div class="card-header" style="background: #ECFDF5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #A7F3D0; color: #065F46;">
+            🍳 餸 · 海鮮
+          </span>
+          <span class="time-badge">⏱️ 12 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍳</span>
+          <span class="highlight-badge">水開蒸 8 分鐘 · 清淡少油</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">絲瓜蝦仁蒸蛋</h3>
+        
+        <p class="card-desc">水開蒸 8 分鐘即成！絲瓜清潤甘甜，雞蛋如布甸般細膩絲滑，蝦仁彈牙，一家大小都愛吃。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">絲瓜（勝瓜）</span><span class="ing-badge">鮮蝦仁</span><span class="ing-badge">滑豆腐</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="loofah-shrimp-steamed-egg.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="tomato-garlic-shrimp-pasta" data-category="staple" data-meat="seafood">
+      <div class="card-header" style="background: #FFE4E6;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FECDD3; color: #9F1239;">
+            🍚 主食 · 海鮮
+          </span>
+          <span class="time-badge">⏱️ 20 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍝</span>
+          <span class="highlight-badge">鮮美彈牙 · 地中海風</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">番茄蒜香蝦闊麵</h3>
+        
+        <p class="card-desc">蒜香煎香蝦肉提味，番茄高湯煨煮闊麵，每根麵條都裹滿海鮮的鮮甜與香濃茄汁。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">大鮮蝦</span><span class="ing-badge">意大利闊麵</span><span class="ing-badge">熟番茄泥</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="tomato-shrimp-pasta.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+      </div>
+    </details>
+    
+    <details class="rtree" open data-group="vegetarian">
+      <summary class="rtnode"><span class="rchev">▸</span><span class="rlabel">🥗 素食/其他</span><span class="rcount">5 道</span></summary>
+      <div class="rkids">
+<article class="recipe-card" data-id="autumn-nourishing-soup" data-category="soup" data-meat="vegetarian">
+      <div class="card-header" style="background: #D1FAE5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #A7F3D0; color: #065F46;">
+            🍲 湯 · 素食/其他
+          </span>
+          <span class="time-badge">⏱️ 15 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🥣</span>
+          <span class="highlight-badge">去燥潤燥</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">秋季溫潤去燥湯</h3>
+        <p class="card-subtitle">日式豆腐海帶味噌湯</p>
+        <p class="card-desc">秋季潤燥必備！豆腐滑嫩、海帶鮮美，溫潤脾胃，15 分鐘輕鬆上桌。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">嫩豆腐</span><span class="ing-badge">海帶芽</span><span class="ing-badge">味噌</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="miso-soup.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="garlic-ginger-bok-choy" data-category="dish" data-meat="vegetarian">
+      <div class="card-header" style="background: #DCFCE7;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #BBF7D0; color: #166534;">
+            🍳 餸 · 素食/其他
+          </span>
+          <span class="time-badge">⏱️ 8 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🥬</span>
+          <span class="highlight-badge">去菜青味靠刀工 · 爽脆鮮甜</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">蒜薑炒青江菜絲</h3>
+        
+        <p class="card-desc">透過切細絲刀工去盡菜青澀味，蒜薑大火爆香快炒，保留青江菜清甜爽脆，綠意盎然。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">小棠菜（青江菜）</span><span class="ing-badge">鮮薑絲</span><span class="ing-badge">金黃蒜末</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="bok-choy.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="garlic-potatoes" data-category="dish" data-meat="vegetarian">
+      <div class="card-header" style="background: #FEF3C7;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FDE68A; color: #92400E;">
+            🍳 餸 · 素食/其他
+          </span>
+          <span class="time-badge">⏱️ 25 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🥔</span>
+          <span class="highlight-badge">連皮焗脆邊 · 減重健康碳水</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">蒜香焗迷你薯</h3>
+        
+        <p class="card-desc">焗爐低油版！連皮烤出微焦脆邊，內裡綿密甘甜，蒜蓉迷迭香香氣撲鼻，減脂優質好碳水。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">迷你小新薯</span><span class="ing-badge">蒜香香草</span><span class="ing-badge">橄欖油</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="garlic-potatoes.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="vegetarian-korean-bibimbap" data-category="staple" data-meat="vegetarian">
+      <div class="card-header" style="background: #ECFDF5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #A7F3D0; color: #065F46;">
+            🍚 主食 · 素食/其他
+          </span>
+          <span class="time-badge">⏱️ 20 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🥗</span>
+          <span class="highlight-badge">特調拌飯醬 · 五色營養</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">素食韓式拌飯</h3>
+        
+        <p class="card-desc">自製黃金比例韓式拌飯醬！五彩時蔬搭配微焦豆腐與半熟蛋，微辣微甜，清爽無負擔。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">嫩菠菜</span><span class="ing-badge">黃豆芽</span><span class="ing-badge">煎板豆腐</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="bibimbap.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="black-pepper-mushroom-rice" data-category="staple" data-meat="vegetarian">
+      <div class="card-header" style="background: #F5EBE0;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #E6D5C3; color: #573D24;">
+            🍚 主食 · 素食/其他
+          </span>
+          <span class="time-badge">⏱️ 15 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍄</span>
+          <span class="highlight-badge">還原經典 · 濃郁黑椒汁</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">黑椒忌廉蘑菇飯</h3>
+        <p class="card-subtitle">還原 KFC 經典風味</p>
+        <p class="card-desc">完美復刻連鎖店超人氣白汁蘑菇飯！黑椒的微辛碰撞忌廉奶香，蘑菇滑嫩多汁，拌飯一絕。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">小褐菇</span><span class="ing-badge">淡忌廉</span><span class="ing-badge">香濃黑胡椒</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="mushroom-rice.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+      </div>
+    </details>
+    
+    <details class="rtree" open data-group="pork">
+      <summary class="rtnode"><span class="rchev">▸</span><span class="rlabel">🐷 豬肉</span><span class="rcount">2 道</span></summary>
+      <div class="rkids">
+<article class="recipe-card" data-id="hong-kong-siu-chau-wong" data-category="dish" data-meat="pork">
+      <div class="card-header" style="background: #FEF3C7;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FDE68A; color: #78350F;">
+            🍳 餸 · 豬肉
+          </span>
+          <span class="time-badge">⏱️ 18 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🥓</span>
+          <span class="highlight-badge">港式經典 · 鹹脆鑊氣</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">小炒王</h3>
+        <p class="card-subtitle">蝦乾鹹脆五花腩炒韭菜花</p>
+        <p class="card-desc">大排檔靈魂代表作！五花腩逼出油脂焦脆，搭配香脆蝦乾與嫩脆韭菜花，鑊氣十足。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">五花腩肉</span><span class="ing-badge">優質蝦乾</span><span class="ing-badge">韭菜花</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="siu-chao-wang.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="honey-glazed-pork-ribs" data-category="dish" data-meat="pork">
+      <div class="card-header" style="background: #FFEDD5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FED7AA; color: #9A3412;">
+            🍳 餸 · 豬肉
+          </span>
+          <span class="time-badge">⏱️ 35 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍖</span>
+          <span class="highlight-badge">鹹甜焦香 · 高蛋白</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">蜜汁烤排骨</h3>
+        
+        <p class="card-desc">外皮微微焦化透亮，肉質多汁軟嫩，天然蜂蜜與特製醬汁緊緊包裹每一條排骨。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">新鮮一字排</span><span class="ing-badge">純蜂蜜</span><span class="ing-badge">生抽</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="honey-ribs.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+      </div>
+    </details>
+    
+    <details class="rtree" open data-group="beef">
+      <summary class="rtnode"><span class="rchev">▸</span><span class="rlabel">🐮 牛肉</span><span class="rcount">2 道</span></summary>
+      <div class="rkids">
+<article class="recipe-card" data-id="mushroom-beef-short-ribs" data-category="dish" data-meat="beef">
+      <div class="card-header" style="background: #F5EBE0;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #E6D5C3; color: #573D24;">
+            🍳 餸 · 牛肉
+          </span>
+          <span class="time-badge">⏱️ 20 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🥩</span>
+          <span class="highlight-badge">鑊氣焦香</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">蘑菇牛仔骨</h3>
+        
+        <p class="card-desc">牛仔骨煎至兩面微焦鎖肉汁，搭配多汁鮮褐菇與黑胡椒汁，香氣濃郁超下飯。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">牛仔骨</span><span class="ing-badge">鮮蘑菇</span><span class="ing-badge">黑椒</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="beef-ribs.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="tomato-tofu-braised-beef" data-category="dish" data-meat="beef">
+      <div class="card-header" style="background: #FEE2E2;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FECACA; color: #991B1B;">
+            🍳 餸 · 牛肉
+          </span>
+          <span class="time-badge">⏱️ 30 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍅</span>
+          <span class="highlight-badge">一鍋到底 · 減脂高蛋白</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">番茄豆腐燜牛肉</h3>
+        
+        <p class="card-desc">少油低卡健康之選！番茄天然酸甜熬成濃汁，豆腐吸滿牛肉香氣，一鍋到底省時方便。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">牛冧肉/牛腩</span><span class="ing-badge">老豆腐</span><span class="ing-badge">成熟番茄</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="tomato-beef.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+      </div>
+    </details>
+    
+    <details class="rtree" open data-group="fish">
+      <summary class="rtnode"><span class="rchev">▸</span><span class="rlabel">🐟 魚類</span><span class="rcount">2 道</span></summary>
+      <div class="rkids">
+<article class="recipe-card" data-id="salmon-low-calorie" data-category="dish" data-meat="fish">
+      <div class="card-header" style="background: #FFEDD5;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #FED7AA; color: #C2410C;">
+            🍳 餸 · 魚類
+          </span>
+          <span class="time-badge">⏱️ 15 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🐟</span>
+          <span class="highlight-badge">優質油脂 · 減脂低卡</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">三文魚低卡料理</h3>
+        
+        <p class="card-desc">富含 Omega-3 的三文魚與豆腐煎烤搭配，高蛋白低碳水，健身減脂期的完美菜式。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">優質三文魚柳</span><span class="ing-badge">板豆腐</span><span class="ing-badge">黑胡椒</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="salmon.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+<article class="recipe-card" data-id="ginger-fish" data-category="dish" data-meat="fish">
+      <div class="card-header" style="background: #E0F2FE;">
+        <div class="card-header-top">
+          <span class="category-badge" style="background: #BAE6FD; color: #0369A1;">
+            🍳 餸 · 魚類
+          </span>
+          <span class="time-badge">⏱️ 20 分鐘</span>
+        </div>
+        <div class="card-header-bottom">
+          <span class="dish-icon">🍲</span>
+          <span class="highlight-badge">乾焗唔加水 · 香濃原汁</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">薑蔥焗魚腩</h3>
+        
+        <p class="card-desc">瓦煲乾焗不加一滴水，利用薑蔥墊底逼出香氣，魚腩外皮微脆、魚肉嫩滑鮮甜。</p>
+        <div class="ingredients-row">
+          <span class="ing-label">食材:</span>
+          <span class="ing-badge">鮮鯇魚腩</span><span class="ing-badge">大量薑蔥</span><span class="ing-badge">豆豉醬</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="ginger-fish.html" class="card-btn" onclick="event.stopPropagation();">
+          <span>查看做法與材料</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+      </div>
+    </details>
+    
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="empty-state">
+      <div class="empty-icon">🍲</div>
+      <div class="empty-title">未搵到相符嘅食譜</div>
+      <div class="empty-desc">試下換個食材關鍵字（例如：雞、豆腐、番茄），或者撳下面重設篩選條件。</div>
+      <button id="empty-reset-btn" class="empty-btn">重設搜尋條件</button>
+    </div>
+
+  </main>
+
+  <!-- Quick Recipe Preview Modal -->
+  <div id="recipe-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <button id="modal-close-btn" class="modal-close">✕</button>
+      <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+        <span id="modal-category" style="font-size: 0.75rem; font-weight: 700; background: #FFEDD5; color: #9A3412; padding: 2px 8px; border-radius: 999px;"></span>
+        <span id="modal-meat" style="font-size: 0.75rem; font-weight: 700; background: #F1F5F9; color: #475569; padding: 2px 8px; border-radius: 999px;"></span>
+      </div>
+      <h2 id="modal-title" style="font-size: 1.5rem; font-weight: 800; color: #0F172A; margin-bottom: 6px;"></h2>
+      <p id="modal-desc" style="font-size: 0.9rem; color: #475569; line-height: 1.6;"></p>
+
+      <div class="modal-metrics">
+        <div>
+          <div class="metric-label">預估時間</div>
+          <div id="modal-time" class="metric-val"></div>
+        </div>
+        <div>
+          <div class="metric-label">烹調難度</div>
+          <div id="modal-diff" class="metric-val"></div>
+        </div>
+        <div>
+          <div class="metric-label">份量</div>
+          <div id="modal-servings" class="metric-val"></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <div style="font-size: 0.75rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 8px;">主要食材</div>
+        <div id="modal-ingredients" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <div style="font-size: 0.75rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; margin-bottom: 8px;">特色重點</div>
+        <div id="modal-tags" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+      </div>
+
+      <a id="modal-full-link" href="#" class="modal-link-btn">進入完整食譜頁面 (詳細做法) →</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <strong>秋水重地</strong> · 家常便飯 · 私房食譜庫 ｜ 用心記錄家常之味 · 共享滋補健康生活
+    </div>
+  </footer>
+
+  <!-- Filter & Modal JavaScript -->
+  <script>
+    const RECIPES_DATA = [{"id": "steamed-chicken-luffa", "title": "勝瓜浸雞", "category": "soup", "category_name": "湯", "category_icon": "🍲", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["走地雞", "勝瓜", "薑片", "大地魚粉"], "highlight": "餘溫浸雞嫩滑", "tags": ["滋補", "嫩滑", "清甜"], "time": "25 分鐘", "difficulty": "簡易", "servings": "3-4 人份", "link": "luffa-chicken.html", "color_bg": "#FEF3C7", "badge_color": "#92400E", "badge_bg": "#FDE68A", "icon": "🍗", "desc": "利用餘溫慢慢浸熟雞肉，鎖住肉汁肉質極致嫩滑，勝瓜清甜吸收雞湯鮮味。"}, {"id": "autumn-nourishing-soup", "title": "秋季溫潤去燥湯", "subtitle": "日式豆腐海帶味噌湯", "category": "soup", "category_name": "湯", "category_icon": "🍲", "meat": "vegetarian", "meat_name": "素食/其他", "ingredients": ["嫩豆腐", "海帶芽", "味噌", "蔥花"], "highlight": "去燥潤燥", "tags": ["素食", "去燥", "低卡"], "time": "15 分鐘", "difficulty": "極簡易", "servings": "2-3 人份", "link": "miso-soup.html", "color_bg": "#D1FAE5", "badge_color": "#065F46", "badge_bg": "#A7F3D0", "icon": "🥣", "desc": "秋季潤燥必備！豆腐滑嫩、海帶鮮美，溫潤脾胃，15 分鐘輕鬆上桌。"}, {"id": "scallion-oil-shrimp-noodle", "title": "蔥油鮮蝦湯麵", "category": "soup", "category_name": "湯", "category_icon": "🍲", "meat": "seafood", "meat_name": "海鮮", "ingredients": ["鮮大蝦", "手工麵條", "小蔥", "特調高湯"], "highlight": "蝦頭熬濃湯", "tags": ["濃郁", "海鮮", "鮮甜"], "time": "20 分鐘", "difficulty": "中等", "servings": "1-2 人份", "link": "shrimp-noodle-soup.html", "color_bg": "#FFE4E6", "badge_color": "#9F1239", "badge_bg": "#FECDD3", "icon": "🍜", "desc": "先用蝦頭蝦殼小火煸出紅潤蝦油與濃白湯底，蔥香四溢，麵條吸飽鮮美精華。"}, {"id": "mushroom-beef-short-ribs", "title": "蘑菇牛仔骨", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "beef", "meat_name": "牛肉", "ingredients": ["牛仔骨", "鮮蘑菇", "黑椒", "蒜蓉"], "highlight": "鑊氣焦香", "tags": ["高蛋白", "下飯", "鑊氣"], "time": "20 分鐘", "difficulty": "簡易", "servings": "2-3 人份", "link": "beef-ribs.html", "color_bg": "#F5EBE0", "badge_color": "#573D24", "badge_bg": "#E6D5C3", "icon": "🥩", "desc": "牛仔骨煎至兩面微焦鎖肉汁，搭配多汁鮮褐菇與黑胡椒汁，香氣濃郁超下飯。"}, {"id": "tomato-tofu-braised-beef", "title": "番茄豆腐燜牛肉", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "beef", "meat_name": "牛肉", "ingredients": ["牛冧肉/牛腩", "老豆腐", "成熟番茄", "洋蔥"], "highlight": "一鍋到底 · 減脂高蛋白", "tags": ["一鍋到底", "減脂低卡", "高蛋白"], "time": "30 分鐘", "difficulty": "簡易", "servings": "3-4 人份", "link": "tomato-beef.html", "color_bg": "#FEE2E2", "badge_color": "#991B1B", "badge_bg": "#FECACA", "icon": "🍅", "desc": "少油低卡健康之選！番茄天然酸甜熬成濃汁，豆腐吸滿牛肉香氣，一鍋到底省時方便。"}, {"id": "hong-kong-siu-chau-wong", "title": "小炒王", "subtitle": "蝦乾鹹脆五花腩炒韭菜花", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "pork", "meat_name": "豬肉", "ingredients": ["五花腩肉", "優質蝦乾", "韭菜花", "腰果/魷魚絲"], "highlight": "港式經典 · 鹹脆鑊氣", "tags": ["鑊氣", "經典港味", "香脆下酒"], "time": "18 分鐘", "difficulty": "中等", "servings": "3-4 人份", "link": "siu-chao-wang.html", "color_bg": "#FEF3C7", "badge_color": "#78350F", "badge_bg": "#FDE68A", "icon": "🥓", "desc": "大排檔靈魂代表作！五花腩逼出油脂焦脆，搭配香脆蝦乾與嫩脆韭菜花，鑊氣十足。"}, {"id": "honey-glazed-pork-ribs", "title": "蜜汁烤排骨", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "pork", "meat_name": "豬肉", "ingredients": ["新鮮一字排", "純蜂蜜", "生抽", "蒜末"], "highlight": "鹹甜焦香 · 高蛋白", "tags": ["高蛋白", "焦香", "下飯"], "time": "35 分鐘", "difficulty": "簡易", "servings": "3-4 人份", "link": "honey-ribs.html", "color_bg": "#FFEDD5", "badge_color": "#9A3412", "badge_bg": "#FED7AA", "icon": "🍖", "desc": "外皮微微焦化透亮，肉質多汁軟嫩，天然蜂蜜與特製醬汁緊緊包裹每一條排骨。"}, {"id": "salmon-low-calorie", "title": "三文魚低卡料理", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "fish", "meat_name": "魚類", "ingredients": ["優質三文魚柳", "板豆腐", "黑胡椒", "橄欖油"], "highlight": "優質油脂 · 減脂低卡", "tags": ["減脂低卡", "高蛋白", "優質Omega-3"], "time": "15 分鐘", "difficulty": "極簡易", "servings": "2 人份", "link": "salmon.html", "color_bg": "#FFEDD5", "badge_color": "#C2410C", "badge_bg": "#FED7AA", "icon": "🐟", "desc": "富含 Omega-3 的三文魚與豆腐煎烤搭配，高蛋白低碳水，健身減脂期的完美菜式。"}, {"id": "ginger-fish", "title": "薑蔥焗魚腩", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "fish", "meat_name": "魚類", "ingredients": ["鮮鯇魚腩", "大量薑蔥", "豆豉醬", "紹興酒"], "highlight": "乾焗唔加水 · 香濃原汁", "tags": ["高蛋白", "原汁原味", "粵菜經典"], "time": "20 分鐘", "difficulty": "中等", "servings": "2-3 人份", "link": "ginger-fish.html", "color_bg": "#E0F2FE", "badge_color": "#0369A1", "badge_bg": "#BAE6FD", "icon": "🍲", "desc": "瓦煲乾焗不加一滴水，利用薑蔥墊底逼出香氣，魚腩外皮微脆、魚肉嫩滑鮮甜。"}, {"id": "squid-seaweed", "title": "紫菜魷魚烙", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "seafood", "meat_name": "海鮮", "ingredients": ["鮮魷魚", "頭水紫菜", "紅薯粉", "芹菜粒"], "highlight": "外脆內軟 · 唔使刀工", "tags": ["香脆", "海鮮", "潮汕風味"], "time": "15 分鐘", "difficulty": "簡易", "servings": "2-3 人份", "link": "squid-seaweed.html", "color_bg": "#CCFBF1", "badge_color": "#115E59", "badge_bg": "#99F6E4", "icon": "🦑", "desc": "無需複雜刀工！紫菜的海洋芳香加上鮮魷的彈牙口感，煎得金黃酥脆，下飯兼佐茶小點。"}, {"id": "salted-kelp-tofu-shrimp", "title": "鹽昆布豆腐蝦仁", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "seafood", "meat_name": "海鮮", "ingredients": ["新鮮板豆腐", "鮮蝦仁", "日本鹽昆布", "初榨芝麻油"], "highlight": "涼拌快手 · 清爽開胃", "tags": ["快手省時", "減脂低卡", "涼拌小菜"], "time": "10 分鐘", "difficulty": "極簡易", "servings": "2-3 人份", "link": "salted-kelp-tofu-shrimp.html", "color_bg": "#E0F2FE", "badge_color": "#0284C7", "badge_bg": "#BAE6FD", "icon": "🦐", "desc": "不用開大火的極速清爽涼拌料理！鹽昆布提鮮層次豐富，豆腐清涼滑口，蝦仁鮮甜爽脆。"}, {"id": "loofah-shrimp-steamed-egg", "title": "絲瓜蝦仁蒸蛋", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "seafood", "meat_name": "海鮮", "ingredients": ["絲瓜（勝瓜）", "鮮蝦仁", "滑豆腐", "雞蛋"], "highlight": "水開蒸 8 分鐘 · 清淡少油", "tags": ["快手省時", "清淡少油", "高蛋白"], "time": "12 分鐘", "difficulty": "簡易", "servings": "2-3 人份", "link": "loofah-shrimp-steamed-egg.html", "color_bg": "#ECFDF5", "badge_color": "#065F46", "badge_bg": "#A7F3D0", "icon": "🍳", "desc": "水開蒸 8 分鐘即成！絲瓜清潤甘甜，雞蛋如布甸般細膩絲滑，蝦仁彈牙，一家大小都愛吃。"}, {"id": "braised-chicken-thigh", "title": "法式蘑菇忌廉燉大雞髀", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["大雞髀", "小啡菇", "淡忌廉", "洋蔥牛油"], "highlight": "法式家常 · 高蛋白", "tags": ["高蛋白", "濃郁", "法式家常"], "time": "30 分鐘", "difficulty": "中等", "servings": "2-3 人份", "link": "chicken-mushroom.html", "color_bg": "#FEF3C7", "badge_color": "#92400E", "badge_bg": "#FDE68A", "icon": "🍗", "desc": "雞髀煎香鎖住肉汁，與洋蔥炒香小啡菇慢火燜燉，最後淋入淡忌廉收汁，濃郁奶香超誘人。"}, {"id": "pineapple-chicken", "title": "菠蘿雞排", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["去骨雞髀肉", "鮮菠蘿/菠蘿片", "洋蔥", "特調酸甜汁"], "highlight": "蓋蓋燜 10 分鐘 · 酸甜開胃", "tags": ["快手省時", "高蛋白", "酸甜開胃"], "time": "15 分鐘", "difficulty": "簡易", "servings": "2-3 人份", "link": "pineapple-chicken.html", "color_bg": "#FEF9C3", "badge_color": "#854D0E", "badge_bg": "#FEF08A", "icon": "🍍", "desc": "菠蘿的天然酵素讓雞肉無比軟嫩，酸甜汁均勻裹滿每一塊雞排，開胃醒脾，大人小朋友爭住食。"}, {"id": "crispy-salt-grilled-chicken-wings", "title": "爆脆鹽燒雞翼", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["中雞翼", "特級味鹽", "黑胡椒粒", "檸檬汁"], "highlight": "平底鑊 7 分鐘 · 外脆內嫩", "tags": ["快手省時", "高蛋白", "香脆多汁"], "time": "10 分鐘", "difficulty": "極簡易", "servings": "2-3 人份", "link": "crispy-salt-grilled-chicken-wings.html", "color_bg": "#FFEDD5", "badge_color": "#9A3412", "badge_bg": "#FED7AA", "icon": "🍗", "desc": "只用平底鑊 7 分鐘搞掂！不用油炸即可煎出玻璃般脆皮，一口咬下肉汁迸發，純粹椒鹽滋味。"}, {"id": "garlic-lemon-wings", "title": "蒜香檸檬雞翼", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["中雞翼", "蒜片", "檸檬", "洋蔥", "冰糖"], "highlight": "全程中火煎香 · 酸甜開胃", "tags": ["高蛋白", "酸甜開胃", "快手省時"], "time": "15 分鐘", "difficulty": "簡易", "servings": "2-3 人份", "link": "garlic-lemon-wings.html", "color_bg": "#FFEDD5", "badge_color": "#9A3412", "badge_bg": "#FED7AA", "icon": "🍗", "desc": "先煎皮厚嗰面，全程中火；蒜片炒香後落洋蔥、檸檬片同冰糖，糖溶化中和酸味，帶少少酸好開胃。"}, {"id": "garlic-ginger-bok-choy", "title": "蒜薑炒青江菜絲", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "vegetarian", "meat_name": "素食/其他", "ingredients": ["小棠菜（青江菜）", "鮮薑絲", "金黃蒜末", "海鹽"], "highlight": "去菜青味靠刀工 · 爽脆鮮甜", "tags": ["素食", "快手省時", "減脂低卡"], "time": "8 分鐘", "difficulty": "簡易", "servings": "2-3 人份", "link": "bok-choy.html", "color_bg": "#DCFCE7", "badge_color": "#166534", "badge_bg": "#BBF7D0", "icon": "🥬", "desc": "透過切細絲刀工去盡菜青澀味，蒜薑大火爆香快炒，保留青江菜清甜爽脆，綠意盎然。"}, {"id": "garlic-potatoes", "title": "蒜香焗迷你薯", "category": "dish", "category_name": "餸", "category_icon": "🍳", "meat": "vegetarian", "meat_name": "素食/其他", "ingredients": ["迷你小新薯", "蒜香香草", "橄欖油", "海鹽黑椒"], "highlight": "連皮焗脆邊 · 減重健康碳水", "tags": ["素食", "減脂低卡", "香脆好味"], "time": "25 分鐘", "difficulty": "極簡易", "servings": "2-4 人份", "link": "garlic-potatoes.html", "color_bg": "#FEF3C7", "badge_color": "#92400E", "badge_bg": "#FDE68A", "icon": "🥔", "desc": "焗爐低油版！連皮烤出微焦脆邊，內裡綿密甘甜，蒜蓉迷迭香香氣撲鼻，減脂優質好碳水。"}, {"id": "japanese-curry-chicken-rice", "title": "日式咖喱雞飯", "category": "staple", "category_name": "主食", "category_icon": "🍚", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["雞腿肉", "日式咖喱塊", "洋蔥馬鈴薯", "胡蘿蔔"], "highlight": "一鍋到底 · 4 人家庭份", "tags": ["一鍋到底", "家常經典", "飽腹主食"], "time": "30 分鐘", "difficulty": "簡易", "servings": "4 人份", "link": "curry-rice.html", "color_bg": "#FEF3C7", "badge_color": "#78350F", "badge_bg": "#FDE68A", "icon": "🍛", "desc": "經典家常一鍋熟！洋蔥炒至焦糖色帶出濃醇甜味，咖喱醬汁拌入白飯，暖胃飽肚的家常靈魂。"}, {"id": "tomato-garlic-chicken-pasta", "title": "番茄蒜香雞肉闊麵", "category": "staple", "category_name": "主食", "category_icon": "🍚", "meat": "chicken", "meat_name": "雞肉", "ingredients": ["去骨雞肉", "意大利闊麵", "羅馬熟番茄", "淡忌廉蒜末"], "highlight": "高蛋白 · 濃香酸甜", "tags": ["高蛋白", "西式主食", "飽腹"], "time": "20 分鐘", "difficulty": "簡易", "servings": "2 人份", "link": "tomato-chicken-pasta.html", "color_bg": "#FEE2E2", "badge_color": "#991B1B", "badge_bg": "#FECACA", "icon": "🍝", "desc": "手工闊麵充分掛汁！濃郁番茄紅醬加入微量忌廉調和酸度，雞肉軟嫩高蛋白，色香味俱全。"}, {"id": "tomato-garlic-shrimp-pasta", "title": "番茄蒜香蝦闊麵", "category": "staple", "category_name": "主食", "category_icon": "🍚", "meat": "seafood", "meat_name": "海鮮", "ingredients": ["大鮮蝦", "意大利闊麵", "熟番茄泥", "蒜香白酒"], "highlight": "鮮美彈牙 · 地中海風", "tags": ["海鮮", "西式主食", "濃醇"], "time": "20 分鐘", "difficulty": "簡易", "servings": "2 人份", "link": "tomato-shrimp-pasta.html", "color_bg": "#FFE4E6", "badge_color": "#9F1239", "badge_bg": "#FECDD3", "icon": "🍝", "desc": "蒜香煎香蝦肉提味，番茄高湯煨煮闊麵，每根麵條都裹滿海鮮的鮮甜與香濃茄汁。"}, {"id": "vegetarian-korean-bibimbap", "title": "素食韓式拌飯", "category": "staple", "category_name": "主食", "category_icon": "🍚", "meat": "vegetarian", "meat_name": "素食/其他", "ingredients": ["嫩菠菜", "黃豆芽", "煎板豆腐", "太陽蛋/秘調拌飯醬"], "highlight": "特調拌飯醬 · 五色營養", "tags": ["素食", "健康五色", "飽腹主食"], "time": "20 分鐘", "difficulty": "簡易", "servings": "1-2 人份", "link": "bibimbap.html", "color_bg": "#ECFDF5", "badge_color": "#065F46", "badge_bg": "#A7F3D0", "icon": "🥗", "desc": "自製黃金比例韓式拌飯醬！五彩時蔬搭配微焦豆腐與半熟蛋，微辣微甜，清爽無負擔。"}, {"id": "black-pepper-mushroom-rice", "title": "黑椒忌廉蘑菇飯", "subtitle": "還原 KFC 經典風味", "category": "staple", "category_name": "主食", "category_icon": "🍚", "meat": "vegetarian", "meat_name": "素食/其他", "ingredients": ["小褐菇", "淡忌廉", "香濃黑胡椒", "高湯米飯"], "highlight": "還原經典 · 濃郁黑椒汁", "tags": ["濃郁", "家常主食", "超人氣"], "time": "15 分鐘", "difficulty": "極簡易", "servings": "2 人份", "link": "mushroom-rice.html", "color_bg": "#F5EBE0", "badge_color": "#573D24", "badge_bg": "#E6D5C3", "icon": "🍄", "desc": "完美復刻連鎖店超人氣白汁蘑菇飯！黑椒的微辛碰撞忌廉奶香，蘑菇滑嫩多汁，拌飯一絕。"}];
+
+    let currentCategory = 'all';
+    let currentMeat = 'all';
+    let searchQuery = '';
+
+    const cards = document.querySelectorAll('.recipe-card');
+    const countEl = document.getElementById('current-count');
+    const emptyEl = document.getElementById('empty-state');
+    const gridEl = document.getElementById('recipes-grid');
+    const searchInput = document.getElementById('search-input');
+    const clearBtn = document.getElementById('clear-search');
+    const resetBtn = document.getElementById('reset-filters');
+    const emptyResetBtn = document.getElementById('empty-reset-btn');
+
+    // Modal
+    const modal = document.getElementById('recipe-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalCat = document.getElementById('modal-category');
+    const modalMeat = document.getElementById('modal-meat');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalTime = document.getElementById('modal-time');
+    const modalDiff = document.getElementById('modal-diff');
+    const modalServings = document.getElementById('modal-servings');
+    const modalIngs = document.getElementById('modal-ingredients');
+    const modalTags = document.getElementById('modal-tags');
+    const modalLink = document.getElementById('modal-full-link');
+
+    function filterCards() {
+      let visibleCount = 0;
+      const q = searchQuery.trim().toLowerCase();
+
+      cards.forEach(card => {
+        const id = card.getAttribute('data-id');
+        const cat = card.getAttribute('data-category');
+        const meat = card.getAttribute('data-meat');
+        const recipe = RECIPES_DATA.find(r => r.id === id);
+
+        let matches = true;
+        if (currentCategory !== 'all' && cat !== currentCategory) matches = false;
+        if (currentMeat !== 'all' && meat !== currentMeat) matches = false;
+
+        if (matches && q !== '' && recipe) {
+          const t = recipe.title.toLowerCase();
+          const sub = (recipe.subtitle || '').toLowerCase();
+          const desc = recipe.desc.toLowerCase();
+          const highlight = recipe.highlight.toLowerCase();
+          const ings = recipe.ingredients.join(' ').toLowerCase();
+          const tags = recipe.tags.join(' ').toLowerCase();
+
+          if (!t.includes(q) && !sub.includes(q) && !desc.includes(q) && !highlight.includes(q) && !ings.includes(q) && !tags.includes(q)) {
+            matches = false;
+          }
+        }
+
+        if (matches) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.querySelectorAll('.rtree').forEach(g => {
+        const any = [...g.querySelectorAll('.recipe-card')].some(c => c.style.display !== 'none');
+        g.style.display = any ? '' : 'none';
+        if (any && (currentCategory !== 'all' || currentMeat !== 'all' || q !== '')) g.open = true;
+      });
+
+      countEl.textContent = visibleCount;
+      if (visibleCount === 0) {
+        gridEl.style.display = 'none';
+        emptyEl.style.display = 'block';
+      } else {
+        gridEl.style.display = 'block';
+        emptyEl.style.display = 'none';
+      }
+    }
+
+    // Search event
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      clearBtn.style.display = searchQuery ? 'block' : 'none';
+      filterCards();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearBtn.style.display = 'none';
+      filterCards();
+    });
+
+    // Category tabs
+    document.querySelectorAll('.cat-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.getAttribute('data-category');
+        filterCards();
+      });
+    });
+
+    // Meat chips
+    document.querySelectorAll('.meat-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.meat-chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMeat = btn.getAttribute('data-meat');
+        filterCards();
+      });
+    });
+
+    function resetFilters() {
+      currentCategory = 'all';
+      currentMeat = 'all';
+      searchQuery = '';
+      searchInput.value = '';
+      clearBtn.style.display = 'none';
+
+      document.querySelectorAll('.cat-tab').forEach(b => {
+        if (b.getAttribute('data-category') === 'all') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+
+      document.querySelectorAll('.meat-chip').forEach(b => {
+        if (b.getAttribute('data-meat') === 'all') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+
+      filterCards();
+    }
+
+    resetBtn.addEventListener('click', resetFilters);
+    emptyResetBtn.addEventListener('click', resetFilters);
+
+    // Modal Events
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-id');
+        const recipe = RECIPES_DATA.find(r => r.id === id);
+        if (!recipe) return;
+
+        modalCat.textContent = `${recipe.category_icon} ${recipe.category_name}`;
+        modalMeat.textContent = recipe.meat_name;
+        modalTitle.textContent = recipe.title;
+        modalDesc.textContent = recipe.desc;
+        modalTime.textContent = recipe.time;
+        modalDiff.textContent = recipe.difficulty;
+        modalServings.textContent = recipe.servings;
+        modalLink.setAttribute('href', recipe.link);
+
+        modalIngs.innerHTML = recipe.ingredients.map(i => `<span style="font-size:0.8rem; background:#F1F5F9; color:#334155; padding:3px 10px; border-radius:6px; font-weight:600;">${i}</span>`).join('');
+        modalTags.innerHTML = [recipe.highlight, ...recipe.tags].map(t => `<span style="font-size:0.8rem; background:#FEF3C7; color:#92400E; padding:3px 10px; border-radius:6px; font-weight:700;">${t}</span>`).join('');
+
+        modal.classList.add('open');
+      });
+    });
+
+    modalCloseBtn.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal.classList.remove('open');
+    });
+  </script>
+  <nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/" class="on"><span class="ti">🍳</span>家常便飯</a><a href="/notes/"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+  <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+</body>
+</html>
