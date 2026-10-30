@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全球市值榜（月榜） · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:18px;font-weight:700;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="index.html">← 投資筆記</a></div></div>
+<div class="hero"><div class="kicker">投資筆記 · 數據榜單</div><h1>🌍 全球市值榜</h1><p>每月一期 · 好似流行榜咁追升跌</p></div>
+<div class="wrap">
+
+<div class="pagetitle">🌍 全球市值榜 · 2026 年 10 月（創刊號）</div>
+<div class="pagesub">每月一期 · 好似流行榜咁追升跌 · Top 30 · 資料截至 2026-10-30</div>
+<style>.ctable{width:100%;border-collapse:collapse;font-size:15px;margin:14px 0}.ctable th{text-align:left;color:var(--muted);font-size:13px;padding:8px 6px;border-bottom:2px solid var(--acc-line)}.ctable th.cap{text-align:right}.ctable td{padding:9px 6px;border-bottom:1px solid #F3E7D7;vertical-align:middle}.ctable .rk{font-weight:800;width:32px;color:var(--acc-deep);font-size:16px}.ctable .nm{font-weight:700}.ctable .tk{color:var(--muted);font-size:12.5px}.ctable .cap{text-align:right;font-weight:700;white-space:nowrap}.ctable .mv{color:var(--muted);text-align:center}.hlbox{background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:14px;padding:14px 16px;margin:12px 0;line-height:2}</style>
+<div class="hlbox">🏆 <strong>本月冠軍：NVIDIA</strong>（$5.16 兆）——同第二名 Apple（$5.09 兆）只差 1.3%，榜首貼身肉搏<br>
+🚀 <strong>SpaceX</strong> 2026 年 6 月上市，僅四個多月市值已達 $1.95 兆、直入第 7，係頭十名最年輕面孔<br>
+🧮 頭 10 名合共市值約 <strong>$29.4 兆</strong>美元<br>
+🇹🇼 台積電第 6，係亞洲排名最高嘅公司；🇨🇳 中國公司有建行（28）同長鑫科技（29）入榜，騰訊第 32、僅差兩位</div>
+<table class="ctable">
+<tr><th>名次</th><th>公司</th><th class="cap">市值（US$）</th><th>國家</th><th>上月</th><th>走勢</th></tr>
+<tr><td class="rk">1</td><td><span class="nm">🥇NVIDIA</span><br><span class="tk">NVDA</span></td><td class="cap">$5.16 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">2</td><td><span class="nm">🥈Apple</span><br><span class="tk">AAPL</span></td><td class="cap">$5.09 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">3</td><td><span class="nm">🥉Microsoft</span><br><span class="tk">MSFT</span></td><td class="cap">$3.94 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">4</td><td><span class="nm">Alphabet（Google）</span><br><span class="tk">GOOG</span></td><td class="cap">$3.45 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">5</td><td><span class="nm">Amazon</span><br><span class="tk">AMZN</span></td><td class="cap">$2.63 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">6</td><td><span class="nm">台積電 TSMC</span><br><span class="tk">TSM</span></td><td class="cap">$2.24 兆</td><td>台灣</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">7</td><td><span class="nm">SpaceX</span><br><span class="tk">SPCX</span></td><td class="cap">$1.95 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">8</td><td><span class="nm">沙特阿美 Saudi Aramco</span><br><span class="tk">2222.SR</span></td><td class="cap">$1.67 兆</td><td>沙特阿拉伯</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">9</td><td><span class="nm">Broadcom</span><br><span class="tk">AVGO</span></td><td class="cap">$1.65 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">10</td><td><span class="nm">Meta</span><br><span class="tk">META</span></td><td class="cap">$1.60 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">11</td><td><span class="nm">Tesla</span><br><span class="tk">TSLA</span></td><td class="cap">$1.59 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">12</td><td><span class="nm">Eli Lilly</span><br><span class="tk">LLY</span></td><td class="cap">$1.22 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">13</td><td><span class="nm">Berkshire Hathaway</span><br><span class="tk">BRK-B</span></td><td class="cap">$1.16 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">14</td><td><span class="nm">Samsung</span><br><span class="tk">005930.KS</span></td><td class="cap">$1.10 兆</td><td>南韓</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">15</td><td><span class="nm">Micron</span><br><span class="tk">MU</span></td><td class="cap">$1.06 兆</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">16</td><td><span class="nm">Walmart</span><br><span class="tk">WMT</span></td><td class="cap">$9,620 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">17</td><td><span class="nm">AMD</span><br><span class="tk">AMD</span></td><td class="cap">$9,247 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">18</td><td><span class="nm">JPMorgan Chase</span><br><span class="tk">JPM</span></td><td class="cap">$9,124 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">19</td><td><span class="nm">Visa</span><br><span class="tk">V</span></td><td class="cap">$7,673 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">20</td><td><span class="nm">SK Hynix</span><br><span class="tk">000660.KS</span></td><td class="cap">$7,572 億</td><td>南韓</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">21</td><td><span class="nm">Exxon Mobil</span><br><span class="tk">XOM</span></td><td class="cap">$7,537 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">22</td><td><span class="nm">Johnson & Johnson</span><br><span class="tk">JNJ</span></td><td class="cap">$6,625 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">23</td><td><span class="nm">ASML</span><br><span class="tk">ASML</span></td><td class="cap">$6,458 億</td><td>荷蘭</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">24</td><td><span class="nm">Mastercard</span><br><span class="tk">MA</span></td><td class="cap">$5,569 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">25</td><td><span class="nm">AbbVie</span><br><span class="tk">ABBV</span></td><td class="cap">$5,139 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">26</td><td><span class="nm">Intel</span><br><span class="tk">INTC</span></td><td class="cap">$4,867 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">27</td><td><span class="nm">Palantir</span><br><span class="tk">PLTR</span></td><td class="cap">$4,720 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">28</td><td><span class="nm">中國建設銀行</span><br><span class="tk">601939.SS</span></td><td class="cap">$4,695 億</td><td>中國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">29</td><td><span class="nm">長鑫科技 CXMT</span><br><span class="tk">688825.SS</span></td><td class="cap">$4,552 億</td><td>中國</td><td class="mv">—</td><td class="mv">—</td></tr>
+<tr><td class="rk">30</td><td><span class="nm">Chevron</span><br><span class="tk">CVX</span></td><td class="cap">$4,540 億</td><td>美國</td><td class="mv">—</td><td class="mv">—</td></tr>
+</table>
+<p>📌 本期係創刊號，未有上月對比；由 2026 年 11 月榜（12 月初更新）起，「上月／走勢」欄會顯示升跌（▲▼—／🆕 新上榜），並累積「最高名次」與「上榜期數」。</p>
+<div class="srcbox">來源：CompaniesMarketCap 全球市值排名（2026-10-30 抓取）；市值以美元計，1 兆 = 1 萬億。排名每月更新一次。</div>
+<div class="pagetitle" style="margin-top:26px">📚 歷期榜單</div>
+<p>2026 年 10 月（創刊號）· 本頁<br>2026 年 11 月榜 · 12 月初更新</p>
+
+</div>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/"><span class="ti">🍳</span>家常便飯</a><a href="/notes/" class="on"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+</body>
+</html>
