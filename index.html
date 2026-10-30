@@ -25,7 +25,7 @@
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
-  line-height:1.8;font-size:17px;padding-bottom:70px}
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
 .wrap{max-width:700px;margin:0 auto;padding:0 20px}
 a{color:var(--acc);text-decoration:none}
 /* ---------- top bar ---------- */
@@ -131,10 +131,11 @@ details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
 </style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
 </head>
 <body>
-<div class="topbar"><div class="wrap"><div class="brand">PAT<span>ZONE</span></div><span></span></div></div>
-<div class="hero"><div class="kicker">WELCOME</div><h1>Pat Zone</h1><p>食譜 · 投資筆記，隨時開嚟睇</p></div>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><span></span></div></div>
+<div class="hero"><div class="kicker">WELCOME</div><h1>秋水重地</h1><p>食譜 · 投資筆記，隨時開嚟睇</p></div>
 <div class="wrap">
 
 <a class="homecard" href="recipes/index.html">
@@ -153,7 +154,8 @@ footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-s
   <span class="go">→</span>
 </a>
 </div>
-<footer>PAT ZONE</footer>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/" class="on"><span class="ti">🏠</span>首頁</a><a href="/recipes/"><span class="ti">🍳</span>家常便飯</a><a href="/notes/"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
 </body>
 </html>
