@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 公司借錢的速度：與美國國債搶長債買家 · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:18px;font-weight:700;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="index.html">← 投資筆記</a></div></div>
+<div class="hero"><div class="kicker">投資筆記 · 研究專題</div><h1>💸 AI 公司債務</h1><p>與美國國債搶長債買家 · 連圖整理</p></div>
+<div class="wrap">
+
+<div class="pagetitle">💸 AI 公司借錢的速度：與美國國債搶長債買家</div>
+<div class="pagesub">2026-11-02 · 整理自 Sheraton Wu 研究帖（數字源自美國財政部、CBO 及各公司 SEC 財報；AI 借款總額及年期換算為作者個人估算）</div>
+<div class="srcbox">原文連結<br>
+<a href="https://www.facebook.com/groups/110478363692761/permalink/1805071530900094/">Sheraton Wu Facebook 研究帖（2026-11-02）</a></div>
+
+<p class="lede">AI 相關公司今年合共借了約 6,000 億美元，相當於美國政府全年淨借款的近三成（28%）。存量上 AI 公司的債只佔國債 2%，但流量和年期才是問題：AI 發的大多是 10 至 40 年長債，與財政部搶同一批買家——壽險和退休基金。</p>
+<figure style="margin:14px 0"><img src="img/ai-debt/ai-debt-5.jpg" alt="美國債務鐘截圖" style="width:100%;height:auto;border:1px solid #e2e2e6;border-radius:8px"><figcaption style="font-size:.85em;color:#666;margin-top:4px">背景：美國債務鐘截圖——國債 40.58 兆美元、聯邦支出 7.43 兆、赤字 2.01 兆（截圖時點）。</figcaption></figure>
+
+<div class="sect"><span class="e">1️⃣</span><h2>規模：今年 6,000 億，明年守不住三分之一</h2></div>
+<p>美國財政部最新數字（10/29）：國債總額 40.6 兆美元；2026 財年政府收入 5.4 兆、支出 7.4 兆、赤字 2.0 兆、淨利息約 1.05 兆。換算成 10 年期等值，今年 AI 長債供給已是財政部的 72%；若 AI 借款明年再增 40%，將升至 95% 以上。高盛估計明年光是雲端大廠就要發債 4,200 億美元，較今年的 2,500 至 2,800 億多五至七成；要守在國債三分之一以下，明年 AI 借款最多只能多借 22% 至 39%，難度很高。</p>
+<figure style="margin:14px 0"><img src="img/ai-debt/ai-debt-1.jpg" alt="AI 借款與財政部淨借款比較" style="width:100%;height:auto;border:1px solid #e2e2e6;border-radius:8px"><figcaption style="font-size:.85em;color:#666;margin-top:4px">AI 今年借款 6,000 億，相當於財政部全年淨借款 2.13 兆的 28%；換算 10 年期等值，2026 年為財政部的 72%，2027 年（推估）達 95%。</figcaption></figure>
+<figure style="margin:14px 0"><img src="img/ai-debt/ai-debt-4.jpg" alt="AI 債務相當於財政部新發債券的 29%" style="width:100%;height:auto;border:1px solid #e2e2e6;border-radius:8px"><figcaption style="font-size:.85em;color:#666;margin-top:4px">2026–2027 兩年合計：AI 公司總借款 1.4 兆（債 0.9 兆＋股票 0.5 兆），相當於財政部同期新發 notes and bonds（3.0 兆）的 29%。</figcaption></figure>
+
+<div class="sect"><span class="e">2️⃣</span><h2>三組公司：誰付得起這場建設</h2></div>
+<p>作者把 15 家 AI 公司按「債務 ÷ 一年營運現金流」分三組（美國政府以稅收計為 6.1 年）：</p>
+<p>・<b>自己付得起</b>（微軟、Google、Meta）：營運現金流 5,086 億大於資本支出 4,001 億，一年多出 1,085 億；債務 2,453 億，約半年現金流可還清；手上現金 4,120 億比債務還多。</p>
+<p>・<b>靠借錢補缺口</b>（亞馬遜、甲骨文、SpaceX）：營運現金流 2,327 億、資本支出 3,550 億，一年缺 1,224 億；債務 3,446 億（1.5 年現金流），計入未起租租約 4,530 億後升至 3.4 年。</p>
+<p>・<b>新雲＋礦工轉型</b>（CoreWeave、Nebius、IREN、Applied Digital、Cipher、TeraWulf、Hut 8 等 9 家）：營運現金流只有 176 億，資本支出 600 億，缺口是現金流的 2.4 倍；債務 834 億（4.7 年），計入租約後 7.5 年，比美國政府的 6.1 年還高。</p>
+<p>五大雲端（微軟、亞馬遜、Google、Meta、甲骨文）近 12 個月營運現金流合計約 7,240 億，最新資本支出指引合計約 8,300 億，整體已經差約 1,000 億。</p>
+<figure style="margin:14px 0"><img src="img/ai-debt/ai-debt-2.jpg" alt="AI 公司的債要用幾年現金流才還得完" style="width:100%;height:auto;border:1px solid #e2e2e6;border-radius:8px"><figcaption style="font-size:.85em;color:#666;margin-top:4px">債務 ÷ 一年現金流：美國政府 6.1 年；微軟、Google、Meta 0.5 年；亞馬遜、甲骨文、SpaceX 1.5 年（計入租約 3.4 年）；新雲＋礦工轉型 4.7 年（計入租約 7.5 年）。</figcaption></figure>
+<figure style="margin:14px 0"><img src="img/ai-debt/ai-debt-3.jpg" alt="五大雲端自由現金流佔收入比例變化" style="width:100%;height:auto;border:1px solid #e2e2e6;border-radius:8px"><figcaption style="font-size:.85em;color:#666;margin-top:4px">五大雲端自由現金流佔收入比例：2019 年 8%–31%，最新一季跌至 −40%（甲骨文）至 17%（微軟）；Alphabet 4%、Amazon −1%、Meta 12%。</figcaption></figure>
+
+<div class="sect"><span class="e">3️⃣</span><h2>第二條路：財務長的「乾坤大挪移」</h2></div>
+<p>借不到或不想借，就把資本支出搬離資產負債表：甲骨文投資人日示範，每 GW 機房設備原本要先投 370 億，供應商分期付七成後前兩年只要出 180 億，客戶自備晶片更只要 60 億。其他招式包括客戶預付、機房放入 SPV、長期租約不上表。但錢沒有消失，只是換人扛——供應商、客戶、私募信貸。輝達手持淨現金，6 月仍發了 250 億美元債，同時替 OpenAI 的機房租約擔保 1,085 億。</p>
+
+<div class="sect"><span class="e">4️⃣</span><h2>借錢的價錢：越弱越貴</h2></div>
+<p>10 年期美國國債 4.93%（10/30）；Google 今年發債平均票面 5.55%，平均 15 年，比國債高約 0.6 個百分點；SpaceX 2056 年到期債比國債高 2.36 個百分點，5 年期信用違約交換（CDS）由 6 月的 1.10% 升到 1.94%；CoreWeave 新發票據票面 9.6 至 9.75%，次級市場殖利率約 15%，利息已吃掉營收的 25%，比美國政府利息佔收入約兩成還高。政府可以印錢續借，新雲公司不行——債到期借不到新錢就出事。</p>
+
+<div class="sect"><span class="e">5️⃣</span><h2>最脆弱的一環：甲骨文與新雲</h2></div>
+<p>甲骨文債務 1,295 億美元，加上未起租租約 2,880 億，合計超過其市值 3,960 億；信用評等只比垃圾級高一級，一旦被降級，將是史上最大的「墮落天使」，約 1,300 億債要擠進高收益債市場。另一邊廂，收錢的供應商在還債：美光債務一年內由 115 億降到 28 億；美光、蘋果、博通、威騰、希捷、SanDisk、科林研發合計一年還了約 440 億。</p>
+
+<div class="sect"><span class="e">6️⃣</span><h2>觀察重點</h2></div>
+<p>作者估計今年 AI 債供給或推高長期利率 0.1 至 0.2 個百分點；10 年期若升破 5.1%，股市估值開始承壓。反過來，若 AI 公司信用先出事，資金會逃入國債、利率反而下跌（10 月 30 日半導體大跌當日 10 年期就跌了 0.06 個百分點）。最值得盯的一個數字：營運現金流年增率有沒有追上資本支出年增率。日程上：11 月 4 日財政部公布長債標售規模、12 月中甲骨文財報（扣客戶預付後的自由現金流與信評展望）、明年 1 至 2 月雲端大廠財報與 2027 年資本支出指引、2027 年 3 月軟銀 400 億美元過橋貸款到期。作者披露持有 NVDA、NBIS、SPCX，未持有 MSFT、GOOGL、META、AMZN、ORCL、CRWV、IREN 等。</p>
+
+<p>事實整理，無買賣建議。數字來源：美國財政部 Fiscal Data、CBO 2026 財年報告、各公司 SEC 財報（近 12 個月合計）、Sheraton Wu 研究帖（2026-11-02）；AI 借款總額與 10 年期等值換算為作者整理估算，未經獨立核實。</p>
+
+</div>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/"><span class="ti">🍳</span>家常便飯</a><a href="/notes/" class="on"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+</body>
+</html>
