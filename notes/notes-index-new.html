@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投資筆記 · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:18px;font-weight:700;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="../index.html">← 首頁</a></div></div>
+<div class="hero"><div class="kicker">投資筆記</div><h1>📈 投資筆記</h1><p>研究整理，自己重溫用</p></div>
+<div class="wrap">
+<div class="sect"><span class="e">📈</span><h2>個股</h2><span class="n">4 篇</span></div>
+<a class="ncard" href="2899.html"><span class="arrow">→</span><h3>📊 紫金礦業（2899）四方共識完整報告</h3><p>2026-10-09 · 四個 AI 助手討論＋拍板</p></a>
+<details class="tree" open><summary class="tnode"><span class="chev">▸</span><h3>📊 Google（GOOG）</h3><span class="n">兩篇觀點對照</span></summary><div class="tkids">
+<a class="ncard" href="goog-q3-2026.html"><span class="arrow">→</span><h3>📊 Alphabet（GOOG）Q3 2026 財報解剖整理</h3><p>2026-10-30 · FOMO 研究院／Fomosoc 整理</p></a>
+<a class="ncard" href="goog-logic-2026.html"><span class="arrow">→</span><h3>📊 Google 大跌可以抄底嗎？——邏輯投資觀點整理</h3><p>2026-10-30 · 邏輯投資（Vocus）整理</p></a>
+</div></details>
+<a class="ncard" href="intc-q3-2026.html"><span class="arrow">→</span><h3>📊 Intel（INTC）Q3 2026 財報整理</h3><p>2026-10-30 · Sheraton Wu 財報分析整理</p></a>
+<a class="ncard" href="pltr-apple-q3-2026.html"><span class="arrow">→</span><h3>🔭 Palantir + Apple 財報焦點：Q3 2026（未完）</h3><p>2026-11-05 · FOMO研究院整理（公開部分）</p></a>
+<div class="sect"><span class="e">🔭</span><h2>研究專題</h2><span class="n">3 篇</span></div>
+<a class="ncard" href="mmth.html"><span class="arrow">→</span><h3>📊 MMTH 闊度分叉研究共識</h3><p>2026-10-07 · 四個 AI 助手三輪討論共識</p></a>
+<a class="ncard" href="marketcap-chart.html"><span class="arrow">→</span><h3>📊 全球市值榜（月榜）</h3><p>2026-10 創刊號 · Top 30 · 每月更新</p></a>
+<a class="ncard" href="ai-debt-2026.html"><span class="arrow">→</span><h3>📊 AI 公司借錢的速度：與美國國債搶長債買家</h3><p>2026-11-02 · Sheraton Wu 研究整理（連圖）</p></a>
+</div>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/"><span class="ti">🍳</span>家常便飯</a><a href="/notes/" class="on"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/"><span class="ti">💡</span>小知識</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})}</script>
+</body>
+</html>
