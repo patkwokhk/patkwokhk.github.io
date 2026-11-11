@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>旅遊保險索償陷阱 · Pat Zone</title>
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#E0642B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="秋水重地">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFBF4; --card:#fff; --ink:#2E2018; --muted:#9A8271;
+  --acc:#E0642B; --acc-deep:#B34A1D; --acc-soft:#FDEEE1; --acc-line:#F5DCC4;
+  --green:#5F8F3E; --green-soft:#EFF6E8;
+  --amber-bg:#FFFAF0; --amber-line:#F0DDAE;
+  --radius:18px; --shadow:0 6px 24px rgba(170,110,60,.10);
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK","Microsoft JhengHei","Segoe UI",sans-serif;
+  line-height:1.8;font-size:17px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+.wrap{max-width:700px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,251,244,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--acc-line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-weight:800;font-size:17px;letter-spacing:1px;color:var(--ink)}
+.brand span{color:var(--acc)}
+.backlink{font-size:14px;color:var(--muted)}
+.backlink:hover{color:var(--acc)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,#E0642B 0%,#E88B3C 55%,#F0A95C 100%);
+  color:#fff;text-align:center;padding:52px 22px 44px;border-radius:0 0 28px 28px;
+  box-shadow:var(--shadow);margin-bottom:26px}
+.hero .kicker{font-size:13px;letter-spacing:4px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:34px;letter-spacing:3px;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,.12)}
+.hero p{font-size:15px;opacity:.92}
+/* ---------- home cards ---------- */
+.homecard{display:flex;align-items:center;gap:18px;background:var(--card);border-radius:var(--radius);
+  padding:24px 22px;margin:16px 0;box-shadow:var(--shadow);border:1px solid #F7EEDF;
+  transition:transform .15s ease}
+.homecard:hover{transform:translateY(-2px)}
+.homecard .ico{font-size:44px;flex:0 0 auto}
+.homecard h2{font-size:21px;margin-bottom:4px;color:var(--ink)}
+.homecard p{font-size:14px;color:var(--muted)}
+.homecard .go{margin-left:auto;font-size:22px;color:var(--acc);flex:0 0 auto}
+/* ---------- section titles ---------- */
+.sect{display:flex;align-items:center;gap:10px;margin:30px 0 6px}
+.sect .e{font-size:26px}
+.sect h2{font-size:22px;letter-spacing:1px}
+.sect .n{margin-left:auto;font-size:13px;color:var(--muted);background:#F7EEDF;border-radius:12px;padding:2px 10px}
+/* ---------- recipe cards ---------- */
+.rcard{display:block;background:var(--card);border-radius:var(--radius);padding:20px 22px;margin:12px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.rcard:hover{transform:translateY(-2px)}
+.rcard .rhead{display:flex;align-items:center;gap:12px}
+.rcard .re{font-size:32px}
+.rcard h3{font-size:19px;color:var(--ink)}
+.rcard .tags{margin-top:8px}
+.tag{display:inline-block;font-size:12.5px;border-radius:20px;padding:3px 12px;margin:3px 6px 3px 0;font-weight:600}
+.tag.cat{background:var(--acc-soft);color:var(--acc-deep)}
+.tag.meat{background:var(--green-soft);color:var(--green)}
+.tag.desc{background:#F5F1EA;color:var(--muted);font-weight:400}
+/* ---------- recipe page ---------- */
+.pagetitle{font-size:30px;margin:26px 0 4px;letter-spacing:1px}
+.pagesub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.srcbox{background:#F8F3EA;border:1px solid #EDE4D2;border-radius:12px;padding:12px 16px;font-size:13.5px;
+  color:var(--muted);margin:16px 0}
+.srcbox a{word-break:break-all}
+.lede{font-size:18px;color:#4A382A;margin:14px 0 6px}
+.ingcard{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid #F7EEDF;padding:22px;margin:20px 0}
+.ingcard h2,.steps h2,.tips h2{font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ingcard ul{list-style:none;padding:0}
+.ingcard li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed #F1E6D3;font-size:16.5px}
+.ingcard li:last-child{border-bottom:none}
+.ingcard li::before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800}
+.steps{counter-reset:step;margin:20px 0}
+.steps ol{list-style:none;padding:0}
+.steps li{counter-increment:step;position:relative;padding:12px 0 12px 56px;font-size:16.5px;min-height:44px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:10px;width:38px;height:38px;
+  background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;
+  box-shadow:0 3px 10px rgba(224,100,43,.35)}
+.steps li+li{border-top:1px solid #F6EEDF}
+.tips{background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:var(--radius);
+  padding:20px 22px;margin:20px 0}
+.tips ul{list-style:none;padding:0}
+.tips li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.tips li::before{content:"💡";position:absolute;left:0}
+.empty{background:#FDF3E7;border:1px dashed var(--acc);border-radius:var(--radius);
+  padding:30px;text-align:center;color:var(--muted);margin:20px 0}
+/* ---------- notes ---------- */
+.ncard{display:block;background:var(--card);border-radius:var(--radius);padding:22px;margin:14px 0;
+  box-shadow:var(--shadow);border:1px solid #F7EEDF;transition:transform .15s ease}
+.ncard:hover{transform:translateY(-2px)}
+.ncard h3{font-size:19px;color:var(--ink);margin-bottom:6px}
+.ncard p{font-size:14px;color:var(--muted)}
+.ncard .arrow{float:right;font-size:20px;color:var(--acc)}
+.tnode{display:flex;align-items:baseline;gap:10px;background:var(--acc-soft);border:1px solid var(--acc-line);border-radius:var(--radius);padding:16px 22px;margin:14px 0 0;cursor:pointer;list-style:none}
+.tnode::-webkit-details-marker{display:none}
+.tnode h3{font-size:19px}
+.tnode .n{margin-left:auto;color:var(--muted);font-size:14px;white-space:nowrap}
+.tnode .chev{color:var(--acc);font-size:13px;transition:transform .15s ease;display:inline-block}
+details.tree[open ]>.tnode .chev{transform:rotate(90deg)}
+.tkids{margin:0 0 4px 28px;padding:12px 0 2px 22px;border-left:2px solid var(--acc-line);display:flex;flex-direction:column;gap:12px}
+.tkids .ncard{margin:0;position:relative}
+.tkids .ncard::before{content:"";position:absolute;left:-24px;top:50%;width:22px;border-top:2px solid var(--acc-line)}
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:49px;z-index:9;background:rgba(255,251,244,.96);backdrop-filter:blur(8px);
+  display:flex;gap:8px;padding:12px 20px;margin:0 -20px 6px;overflow-x:auto;
+  border-bottom:1px solid var(--acc-line)}
+.tab{flex:1;min-width:78px;border:2px solid var(--acc-line);background:#fff;border-radius:14px;
+  padding:10px 6px;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;font-family:inherit;
+  white-space:nowrap}
+.tab .n{font-size:12px;background:#F5F1EA;border-radius:10px;padding:1px 8px;margin-left:4px;font-weight:400}
+.meat-tabs{top:0;position:static;padding-top:0;border-bottom:none}
+.filter-line{padding:4px 20px 10px;color:var(--muted);font-size:14px}
+.tab.active{background:linear-gradient(135deg,var(--acc),#E88B3C);color:#fff;border-color:transparent;
+  box-shadow:0 4px 12px rgba(224,100,43,.35)}
+.tab.active .n{background:rgba(255,255,255,.25);color:#fff}
+.tabpanel{padding-top:8px;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+footer{text-align:center;color:#C4AE97;font-size:12.5px;margin-top:48px;letter-spacing:2px}
+</style>
+<style>.app-tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;background:rgba(255,251,244,.97);border-top:1px solid #F0DFC8;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(90,50,20,.07)}.app-tabbar a{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;text-decoration:none;color:#A08B76;font-size:11px;line-height:1.25;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang HK",sans-serif}.app-tabbar a .ti{font-size:21px;line-height:1.1}.app-tabbar a.on{color:#E0642B;font-weight:700}</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="brand">秋水<span>重地</span></div><a class="backlink" href="index.html">← 小知識</a></div></div>
+<div class="hero"><div class="kicker">小知識</div><h1>🛡️ 旅遊保險索償陷阱</h1><p>買咗唔等於賠到：10 個最易中伏位</p></div>
+<div class="wrap">
+
+<div class="pagetitle">🛡️ 旅遊保險點解 claim 唔到？</div>
+<div class="pagesub">2026-11-11 · 10 個超易中伏索償位全攻略</div>
+<p class="lede">明明買咗旅遊保險，出事嗰陣先發現一蚊都 claim 唔到——多數唔係保險公司呃人，而係條款入面嘅門檻、限額同時限，一早寫明咗。以下 10 個情境，係最常見嘅拒賠位。</p>
+<div class="srcbox">來源：YouTube 頻道「講呢啲知識」《【遊日必學知識】旅遊保險點解claim唔到？10個超易中伏索償位全攻略！》（2026-10-30）<br><a href="https://www.youtube.com/watch?v=tzAhw25Y1pU">https://www.youtube.com/watch?v=tzAhw25Y1pU</a><br>片中情境為獨立模擬示範，實際索償以個人保單條款及證明文件為準。</div>
+
+<div class="sect"><span class="e">🚫</span><h2>10 個索償陷阱</h2></div>
+<div class="steps"><ol>
+<li><strong>已知風險不受保</strong><br>睇新聞知颱風嚟先至買保險，航班取消都 claim 唔到。睇嘅唔係香港有冇掛風球，而係投保嗰一刻，個風險係咪已經存在或已知悉。行程一確定就買，唔好等出事先買；單一已知事件唔受保，唔等於成份保單其他保障失效。</li>
+<li><strong>航班取消，自購機票差價不保</strong><br>航空公司取消航班，自己另買貴幾千蚊嘅機票，一般唔賠差價：「商業調動」同「機件故障」係兩回事，有延誤津貼亦唔等於包新機票。先向航空公司問改票／退款，再向保險公司確認額外開支受唔受保，保留取消通知同收據。</li>
+<li><strong>延誤起賠時數門檻</strong><br>延誤 5.5 小時一蚊都冇——示例保單要滿 6 小時先起賠。每份保單嘅起賠時數、計算方式（按出發定抵達時間計）都唔同，買之前睇清。出事要向航空公司攞列明原因同時間嘅證明，保留登機證。</li>
+<li><strong>無人看管物品拒賠</strong><br>喺 Cafe 將手袋放喺椅上自己去洗手間，返嚟唔見咗——保單列明無人看管嘅物品不受保。唔係一離開視線必拒，但風險極高；財物跟身最穩陣。</li>
+<li><strong>單件賠償上限 ≠ 總上限</strong><br>見財物最高賠償 $20,000，以為新手機爆 Mon 賠得足？總上限同單件上限係兩回事，手機往往另設較低限額，部分計劃直情唔包手機。買之前確認：包唔包失竊同意外損壞、單件上限、自負額、點計賠償。</li>
+<li><strong>失竊 24 小時內當地報案</strong><br>相機被盜，諗住返香港先算——示例保單要求失竊後 24 小時內向當地警方報案，過時限即唔符合索償要求。有報案紙唔保證賠，但冇就一定出事。</li>
+<li><strong>行李延誤只限外遊目的地</strong><br>返到香港，行李仲喺日本——示例保單嘅行李延誤只適用於抵達外遊目的地後嘅指定情況，回程唔計。唔好只睇有冇「行李延誤」四個字，要睇適用地點、時數同開支限制；行李未到先向航空公司登記。</li>
+<li><strong>租車 NOC 營業損失唔包</strong><br>自駕撞花車，租車公司除自負額外再追 NOC（維修期間租唔出車嘅營業損失）——旅遊保險嘅租車自負額保障只包合資格自負額，NOC 係另一項目。租車前問清兩樣分別受唔受保，出事報警＋通知租車公司＋留紀錄，唔好聽到「全保」就放心。</li>
+<li><strong>活動範圍限制</strong><br>保單寫包消閒滑雪，但跟朋友滑出指定雪道跌傷，醫療費唔賠——涵蓋某活動唔等於無限制。出發前核對活動範圍、裝備要求同其他限制。</li>
+<li><strong>既往病症（舊患）不受保</strong><br>有氣管舊患，去到外地發作睇醫生，一般唔賠——涉及既往病症嘅治療通常不受保。有舊患，投保前查清條款；求醫後備妥診斷證明同收據。外文收據唔係拒賠理由，關鍵係診斷同收費資料夠唔夠、要唔要翻譯。</li>
+</ol></div>
+
+<div class="ingcard"><h2>✅ 買之前核對清單</h2><ul>
+<li>會唔會自駕？→ 租車自負額包幾多、NOC 包唔包</li>
+<li>會唔會滑雪／其他活動？→ 活動範圍同限制</li>
+<li>手機／相機貴重財物？→ 包唔包、單件上限、自負額</li>
+<li>有冇舊患？→ 既往病症條款點處理</li>
+<li>延誤點計？→ 起賠時數、按出發定抵達時間計</li>
+<li>行李延誤？→ 只限目的地定回程都計、時數同開支限制</li>
+<li>行程一確定即刻買，避開已知風險條款</li>
+<li>唔好只比較保費同最高保額，要睇保障啱唔啱自己行程</li>
+</ul></div>
+
+<div class="tips"><h2>出事 SOP ＋索償心法</h2><ul>
+<li>先確保安全，再按情況報警、求醫或通知航空公司</li>
+<li>保留所有事故通知、報告、收據、同各方往來紀錄</li>
+<li>住院、醫療運送等大額開支：先打保險公司支援熱線確認程序，唔好自己決定咗先算</li>
+<li>索償受阻：先分清係缺文件、計錯數，定保障範圍爭議；要求對方指出相關條款，再針對跟進</li>
+<li>買保險唔係越平越好、越貴越齊，最重要係保障配合你嘅行程；唔清楚就投保前問明</li>
+</ul></div>
+
+<p style="color:var(--muted);font-size:14px;margin-top:30px">整理自上述 YouTube 影片，內容經重新整理濃縮；各保單條款不一，投保前請以保單原文為準。</p>
+
+</div>
+<footer>秋水重地 · PAT ZONE</footer>
+<nav class="app-tabbar"><a href="/"><span class="ti">🏠</span>首頁</a><a href="/recipes/"><span class="ti">🍳</span>家常便飯</a><a href="/notes/"><span class="ti">📈</span>投資筆記</a><a href="/knowledge/" class="on"><span class="ti">💡</span>小知識</a><a href="/readlater/"><span class="ti">🔖</span>稍後閱讀</a></nav>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("/sw.js")})})</script>
+</body>
+</html>
